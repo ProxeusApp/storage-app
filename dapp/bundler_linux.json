@@ -1,0 +1,9 @@
+{
+  "app_name": "Proxeus",
+  "icon_path_linux": "resources/icon.png",
+  "output_path": "../artifacts/dapp",
+  "working_directory_path": "../artifacts",
+  "environments": [
+    {"arch": "amd64", "os": "linux"}
+  ]
+}

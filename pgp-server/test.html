@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>PGP Server based on Ethereum Address</h2>
+<p>Please choose between send a PGP public key or find a public key for a given Ethereum address</p>
+
+<form action="http://localhost:8080/pks/add" method="POST">
+  Public Key:<br>
+  <textarea name="keytext" rows="20" cols="66"></textarea>
+  <br>
+  <input type="submit" value="Submit">
+</form>
+
+<br><br><br>
+
+<form action="http://localhost:8080/pks/lookup" method="GET">
+  Ethereum address:<br>
+  <input type="text" name="search" value="ave">
+  <br>
+  <input type="submit" value="Submit">
+</form>
+
+</body>
+</html>

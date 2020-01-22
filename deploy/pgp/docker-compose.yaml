@@ -1,0 +1,9 @@
+version: '3'
+services:
+  pgp:
+    image: pgp:latest
+    volumes:
+    - /data/pgpdb:/data/pgpdb
+    - /var/log:/var/log
+    restart: always
+    ports: ['8090:8080']

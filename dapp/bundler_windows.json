@@ -1,0 +1,17 @@
+{
+  "app_name": "Proxeus",
+  "icon_path_windows": "resources/icon.ico",
+  "output_path": "../artifacts/dapp",
+  "working_directory_path": "../artifacts",
+  "environments": [
+    {
+      "arch": "amd64",
+      "os": "windows",
+      "env": {
+        "CC": "x86_64-w64-mingw32-gcc",
+        "CXX": "x86_64-w64-mingw32-g++",
+        "CGO_ENABLED": "1"
+      }
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "name": "Storage Name",
+  "description": "A description",
+  "jurisdictionCountry": "Switzerland",
+  "dataCenter": "Cham",
+  "logoUrl": "https://proxeus.com/wp-content/uploads/2018/07/logo.svg",
+  "termsAndConditionsUrl": "",
+  "privacyPolicyUrl": "",
+  "maxFileSizeByte": 104857600,
+  "maxStorageDays": 1000,
+  "graceSeconds": 86400,
+  "PriceDay": "0.0001",
+  "PriceByte": "0.0000005"
+}

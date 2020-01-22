@@ -1,0 +1,72 @@
+[
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "docHash",
+        "type": "bytes32"
+      }
+    ],
+    "name": "notarizeDocument",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "getNotarizedDocuments",
+    "outputs": [
+      {
+        "name": "",
+        "type": "bytes32[]"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "docHash",
+        "type": "bytes32"
+      }
+    ],
+    "name": "isNotarized",
+    "outputs": [
+      {
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "constructor"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "name": "from",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "name": "docHash",
+        "type": "bytes32"
+      }
+    ],
+    "name": "ENotarizeDocument",
+    "type": "event"
+  }
+]

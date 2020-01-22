@@ -1,0 +1,17 @@
+{
+  "app_name": "Proxeus",
+  "icon_path_darwin": "resources/icon.icns",
+  "output_path": "../artifacts/dapp",
+  "working_directory_path": "../artifacts",
+  "environments": [
+    {
+      "arch": "amd64",
+      "os": "darwin",
+      "env": {
+        "CC": "o64-clang",
+        "CXX": "o64-clang++",
+        "CGO_ENABLED": "1"
+      }
+    }
+  ]
+}
