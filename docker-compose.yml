@@ -1,0 +1,17 @@
+version: '3.7'
+
+services:
+  spp:
+    build:
+      context: spp
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      - "8085:8082"
+  pgp:
+    build:
+      context: pgp-server
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      - "8084:8080"

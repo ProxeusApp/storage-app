@@ -1,0 +1,6 @@
+/*/build/
+/*/config/
+/dist/
+/src/lib/ChannelHub.js
+/src/lib/ReconnectingWebSocket.js
+/src/lib/customElectron.js

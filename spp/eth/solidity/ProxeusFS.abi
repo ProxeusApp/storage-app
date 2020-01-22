@@ -1,0 +1,759 @@
+[
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "spList",
+		"outputs": [
+			{
+				"name": "",
+				"type": "address[]"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "strPrv",
+				"type": "address"
+			}
+		],
+		"name": "spInfo",
+		"outputs": [
+			{
+				"name": "urlPrefix",
+				"type": "bytes32"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "hash",
+				"type": "bytes32"
+			}
+		],
+		"name": "fileSign",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "hash",
+				"type": "bytes32"
+			}
+		],
+		"name": "fileVerify",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			},
+			{
+				"name": "",
+				"type": "address[]"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "sendr",
+				"type": "address"
+			}
+		],
+		"name": "XESAllowence",
+		"outputs": [
+			{
+				"name": "sum",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "hash",
+				"type": "bytes32"
+			},
+			{
+				"name": "mandatorySigners",
+				"type": "uint256"
+			},
+			{
+				"name": "expiry",
+				"type": "uint256"
+			},
+			{
+				"name": "replacesFile",
+				"type": "bytes32"
+			},
+			{
+				"name": "prvs",
+				"type": "address[]"
+			},
+			{
+				"name": "readers",
+				"type": "address[]"
+			},
+			{
+				"name": "xesAmount",
+				"type": "uint256"
+			}
+		],
+		"name": "createFileShared",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "hash",
+				"type": "bytes32"
+			}
+		],
+		"name": "fileSigners",
+		"outputs": [
+			{
+				"name": "",
+				"type": "address[]"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "hash",
+				"type": "bytes32"
+			},
+			{
+				"name": "addr",
+				"type": "address"
+			}
+		],
+		"name": "fileHasSP",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "hash",
+				"type": "bytes32"
+			},
+			{
+				"name": "definedSigners",
+				"type": "address[]"
+			},
+			{
+				"name": "expiry",
+				"type": "uint256"
+			},
+			{
+				"name": "replacesFile",
+				"type": "bytes32"
+			},
+			{
+				"name": "prvs",
+				"type": "address[]"
+			},
+			{
+				"name": "xesAmount",
+				"type": "uint256"
+			}
+		],
+		"name": "createFileDefinedSigners",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "version",
+				"type": "bytes32"
+			}
+		],
+		"name": "setDappVersion",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "strProv",
+				"type": "address"
+			},
+			{
+				"name": "urlPrefix",
+				"type": "bytes32"
+			}
+		],
+		"name": "spAdd",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "prvs",
+				"type": "address[]"
+			}
+		],
+		"name": "XESAmountPerFile",
+		"outputs": [
+			{
+				"name": "sum",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "hash",
+				"type": "bytes32"
+			},
+			{
+				"name": "addr",
+				"type": "address"
+			},
+			{
+				"name": "write",
+				"type": "bool"
+			}
+		],
+		"name": "fileGetPerm",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "hash",
+				"type": "bytes32"
+			},
+			{
+				"name": "addr",
+				"type": "address[]"
+			}
+		],
+		"name": "fileSetPerm",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "hash",
+				"type": "bytes32"
+			}
+		],
+		"name": "fileRemove",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "hash",
+				"type": "bytes32"
+			},
+			{
+				"name": "signer",
+				"type": "address[]"
+			}
+		],
+		"name": "fileRequestSign",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "dappVersion",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bytes32"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "hash",
+				"type": "bytes32"
+			}
+		],
+		"name": "fileRequestAccess",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "hash",
+				"type": "bytes32"
+			}
+		],
+		"name": "fileInfo",
+		"outputs": [
+			{
+				"name": "id",
+				"type": "bytes32"
+			},
+			{
+				"name": "ownr",
+				"type": "address"
+			},
+			{
+				"name": "fileType",
+				"type": "uint256"
+			},
+			{
+				"name": "removed",
+				"type": "bool"
+			},
+			{
+				"name": "expiry",
+				"type": "uint256"
+			},
+			{
+				"name": "isPublic",
+				"type": "bool"
+			},
+			{
+				"name": "thumbnailHash",
+				"type": "bytes32"
+			},
+			{
+				"name": "fparent",
+				"type": "bytes32"
+			},
+			{
+				"name": "replacesFile",
+				"type": "bytes32"
+			},
+			{
+				"name": "readAccess",
+				"type": "address[]"
+			},
+			{
+				"name": "definedSigners",
+				"type": "address[]"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "hash",
+				"type": "bytes32"
+			},
+			{
+				"name": "pParent",
+				"type": "bytes32"
+			},
+			{
+				"name": "pPublic",
+				"type": "bool"
+			}
+		],
+		"name": "createFileThumbnail",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_eternalstorage",
+				"type": "address"
+			}
+		],
+		"name": "setEternalStorage",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "hash",
+				"type": "bytes32"
+			}
+		],
+		"name": "fileExpiry",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "hash",
+				"type": "bytes32"
+			},
+			{
+				"name": "mandatorySigners",
+				"type": "uint256"
+			},
+			{
+				"name": "expiry",
+				"type": "uint256"
+			},
+			{
+				"name": "replacesFile",
+				"type": "bytes32"
+			},
+			{
+				"name": "prvs",
+				"type": "address[]"
+			},
+			{
+				"name": "xesAmount",
+				"type": "uint256"
+			}
+		],
+		"name": "createFileUndefinedSigners",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "hash",
+				"type": "bytes32"
+			},
+			{
+				"name": "strPrv",
+				"type": "address"
+			}
+		],
+		"name": "fileAddSP",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "hash",
+				"type": "bytes32"
+			}
+		],
+		"name": "isFileRemoved",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "hash",
+				"type": "bytes32"
+			}
+		],
+		"name": "fileSignersCount",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "hash",
+				"type": "bytes32"
+			},
+			{
+				"name": "addr",
+				"type": "address[]"
+			}
+		],
+		"name": "fileRevokePerm",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "strPrv",
+				"type": "address"
+			},
+			{
+				"name": "urlPrefix",
+				"type": "bytes32"
+			}
+		],
+		"name": "spUpdate",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "fileList",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bytes32[]"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"name": "ownr",
+				"type": "address"
+			},
+			{
+				"name": "tokenAddr",
+				"type": "address"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"name": "hash",
+				"type": "bytes32"
+			}
+		],
+		"name": "Deleted",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"name": "oldHash",
+				"type": "bytes32"
+			},
+			{
+				"indexed": true,
+				"name": "newHash",
+				"type": "bytes32"
+			}
+		],
+		"name": "UpdatedEvent",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"name": "hash",
+				"type": "bytes32"
+			},
+			{
+				"indexed": true,
+				"name": "to",
+				"type": "address"
+			}
+		],
+		"name": "RequestSign",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"name": "hash",
+				"type": "bytes32"
+			},
+			{
+				"indexed": true,
+				"name": "who",
+				"type": "address"
+			}
+		],
+		"name": "NotifySign",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"name": "hash",
+				"type": "bytes32"
+			},
+			{
+				"indexed": false,
+				"name": "oldOwner",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"name": "newOwner",
+				"type": "address"
+			}
+		],
+		"name": "OwnerChanged",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"name": "hash",
+				"type": "bytes32"
+			},
+			{
+				"indexed": false,
+				"name": "who",
+				"type": "address"
+			}
+		],
+		"name": "RequestAccess",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"name": "hash",
+				"type": "bytes32"
+			},
+			{
+				"indexed": false,
+				"name": "xesAmount",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"name": "storageProvider",
+				"type": "address"
+			}
+		],
+		"name": "PaymentReceived",
+		"type": "event"
+	}
+]

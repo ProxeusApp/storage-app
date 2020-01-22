@@ -1,0 +1,16 @@
+{
+  "extends": "stylelint-config-standard",
+  "rules": {
+    "comment-empty-line-before": null,
+    "comment-whitespace-inside": null,
+    "rule-empty-line-before": [
+      "always", {
+        "except": ["first-nested"]
+      }
+    ],
+    "at-rule-no-unknown": null,
+    "function-parentheses-newline-inside": null,
+    "selector-pseudo-element-colon-notation": "single",
+    "color-hex-length": "long"
+  }
+}

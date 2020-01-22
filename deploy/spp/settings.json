@@ -1,0 +1,14 @@
+{
+  "name": "Proxeus Storage",
+  "description": "Official Proxeus Storage Provider",
+  "jurisdictionCountry": "Switzerland",
+  "dataCenter": "Cham",
+  "logoUrl": "https://proxeus.com/wp-content/uploads/2018/07/logo.svg",
+  "termsAndConditionsUrl": "https://docs.google.com/document/d/1bLIyQi16L6DGv7N5n_UxS8BidFLc--LtGo0Sf7qanN0/preview",
+  "privacyPolicyUrl": "https://proxeus.com/en/privacy-policy/",
+  "maxFileSizeByte": 900000000,
+  "maxStorageDays": 100,
+  "graceSeconds": 86400,
+  "PriceDay": "0.10",
+  "PriceByte": "0.0000016"
+}

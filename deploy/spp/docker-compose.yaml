@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  spp:
+    image: spp:latest
+    volumes:
+      - ./settings.json:/app/settings.json
+      - /data/sppdb:/data/sppdb
+      - /data/logs/spp/spp.log:/var/log/spp.log # make sure /data/logs/spp/spp.log exists on the host before starting
+    restart: always
+    ports: ['80:8082']
