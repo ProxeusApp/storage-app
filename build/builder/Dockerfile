@@ -28,7 +28,7 @@ RUN set -x; \
 RUN apt-get install -y -q mingw-w64
 
 # Install golang
-ARG go_version="1.11.3"
+ARG go_version="1.13.4"
 RUN  curl https://dl.google.com/go/go${go_version}.linux-amd64.tar.gz > go.tar.gz \
  && tar -xf go.tar.gz \
  && rm go.tar.gz \
