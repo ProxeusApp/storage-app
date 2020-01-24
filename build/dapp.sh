@@ -15,14 +15,8 @@ go generate ./dapp
 
 echo "Bundling electron..."
 
-if [[ "${TARGET}" == "$(go env GOOS)" || "${TARGET}" == "windows" ]]; then
-    # make sure electron bundler is synchronized
-    go install ./vendor/github.com/asticode/go-astilectron-bundler/astilectron-bundler
-    cd dapp && GOCACHE="$(go env GOCACHE)" astilectron-bundler -c bundler_${TARGET}.json -v && cd ..
-else # native or cross compilation not possible for this GOOS and selected target, use docker
-       ./build/run-in-docker.sh builder "
+ ./build/run-in-docker.sh builder "
         # make sure electron bundler is synchronized
         go install ./vendor/github.com/asticode/go-astilectron-bundler/astilectron-bundler
-        cd dapp && astilectron-bundler -c bundler_"${TARGET}".json -v
+        cd dapp && GOCACHE=$(go env GOCACHE) astilectron-bundler -c bundler_"${TARGET}".json -v
      "
-fi

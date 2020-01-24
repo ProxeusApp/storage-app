@@ -47,9 +47,10 @@ go get golang.org/x/tools/cmd/goimports
 # for linux use apt-get
 if installed apt-get; then
     apt-get install mingw-w64 docker.io
-    docker build --tag=builder build/builder
     # TODO: embed osxcross and osx sdk in our infra/repo
 fi
+
+docker build --tag=builder build/builder
 
 # on macs use brew
 if [[ "$OSTYPE" == "darwin"* ]]; then
