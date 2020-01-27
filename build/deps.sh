@@ -5,9 +5,6 @@ installed () {
     which $1
 }
 
-# todo aw: on fresh linux setup had to export go bin path to PATH manually `export $(go env GOPATH)/bin:$PATH`
-# todo: aw: on kubuntu had to install manually `sudo apt-get -y install libgconf2-4` (also some error msg about
-
 # for linux install npm and curl
 if installed apt-get; then
     apt-get install curl;
@@ -38,6 +35,7 @@ require yarn
 
 # install golang's dep
 mkdir -p $(go env GOPATH)/bin
+export PATH=$(go env GOPATH)/bin:$PATH
 curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
 
 go get golang.org/x/tools/cmd/goimports

@@ -33,7 +33,7 @@ On Windows you need to run, **as administrator**
 `npm install -g --production windows-build-tools`
 
 ### Building
-First to initialize dependencies run:
+First to initialize dependencies run (sudo might be needed):
 ```
 make init
 ```
