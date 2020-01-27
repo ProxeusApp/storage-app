@@ -45,6 +45,11 @@ make all
 
 ### Building and running servers locally
 
+Start spp and pgp-server (sudo might be needed)
+```
+docker-compose up spp pgp
+```
+
 To run the app in devMode execute:
 ```
 ./artifacts/dapp/darwin-amd64/Proxeus.app/Contents/MacOS/Proxeus --devMode
