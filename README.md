@@ -21,12 +21,12 @@ sudo apt-get install make golang curl npm docker docker-compose
 
 Get repository:
 ```
-git clone git@github.com:ProxeusApp/storage-app.git $(go env GOPATH)/src/git.proxeus.com/core/central
+git clone git@github.com:ProxeusApp/storage-app.git ~/workspace/storage-app
 ```
 
 Change into directory:
 ```
-cd $(go env GOPATH)/src/git.proxeus.com/core/central
+cd ~/workspace/storage-app
 ```
 
 On Windows you need to run, **as administrator**
@@ -50,7 +50,8 @@ Start spp and pgp-server (sudo might be needed)
 docker-compose up spp pgp
 ```
 
-To run the app in devMode execute:
+To run the app in devMode add the "devMode"-flag:
+E.g. on OSX:
 ```
 ./artifacts/dapp/darwin-amd64/Proxeus.app/Contents/MacOS/Proxeus --devMode
 ```
