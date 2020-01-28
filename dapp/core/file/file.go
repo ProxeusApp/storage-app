@@ -24,7 +24,7 @@ import (
 	"github.com/ProxeusApp/storage-app/dapp/core/file/crypt"
 
 	"github.com/ProxeusApp/storage-app/dapp/core/notification"
-	"github.com/ProxeusApp/storage-app/web"
+	channelhub "github.com/ProxeusApp/storage-app/web"
 
 	"context"
 	"net/http"
