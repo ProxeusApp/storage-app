@@ -5,6 +5,9 @@ installed () {
     which $1
 }
 
+#required for git.proxeus.com/web/channelhub dependency
+export GOPRIVATE="git.proxeus.com"
+
 # for linux install npm and curl
 if installed apt-get; then
     apt-get install curl;

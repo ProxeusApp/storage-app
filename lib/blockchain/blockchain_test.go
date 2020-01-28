@@ -9,9 +9,9 @@ import (
 
 	"github.com/ethereum/go-ethereum/common"
 
-	"git.proxeus.com/core/central/lib/blockchain/bctypes"
-	"git.proxeus.com/core/central/lib/blockchain/ethereum"
-	contract2 "git.proxeus.com/core/central/lib/blockchain/generator/ethereum/go"
+	"github.com/ProxeusApp/storage-app/lib/blockchain/bctypes"
+	"github.com/ProxeusApp/storage-app/lib/blockchain/ethereum"
+	contract2 "github.com/ProxeusApp/storage-app/lib/blockchain/generator/ethereum/go"
 )
 
 //TODO: Nice Tests, Multiple Value Events, Return Values Calls, Glue/Binding Generator
