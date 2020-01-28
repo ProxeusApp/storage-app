@@ -11,6 +11,7 @@ require (
 	github.com/asticode/go-astiamqp v1.0.0 // indirect
 	github.com/asticode/go-astilectron v0.6.0
 	github.com/asticode/go-astilog v1.0.0
+	github.com/asticode/go-bindata v1.0.0 // indirect
 	github.com/atotto/clipboard v0.1.1
 	github.com/boltdb/bolt v1.3.1
 	github.com/btcsuite/btcd v0.0.0-20181130015935-7d2daa5bfef2 // indirect

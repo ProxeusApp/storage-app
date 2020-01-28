@@ -8,8 +8,6 @@ fi
 
 echo "Building for target "${TARGET}"..."
 
-# make sure go-bindata is up to date
-go install ./vendor/github.com/asticode/go-bindata/go-bindata
 # attach bindata with js code
 go generate ./dapp
 
