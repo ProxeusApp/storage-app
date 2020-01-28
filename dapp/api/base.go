@@ -22,7 +22,7 @@ import (
 	"github.com/ProxeusApp/storage-app/dapp/core/file"
 	"github.com/ProxeusApp/storage-app/dapp/core/notification"
 	"github.com/ProxeusApp/storage-app/spp/config"
-	"git.proxeus.com/web/channelhub"
+	"github.com/ProxeusApp/storage-app/web"
 )
 
 func MainApi(e *echo.Echo) (*channelhub.ChannelHub, *core.App) {
