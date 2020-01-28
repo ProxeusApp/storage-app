@@ -16,7 +16,7 @@ import (
 	"github.com/ethereum/go-ethereum/ethclient"
 	cache "github.com/patrickmn/go-cache"
 
-	"git.proxeus.com/core/central/lib/blockchain/bctypes"
+	"github.com/ProxeusApp/storage-app/lib/blockchain/bctypes"
 )
 
 type ETHClient struct {

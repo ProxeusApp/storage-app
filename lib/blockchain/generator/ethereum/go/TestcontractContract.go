@@ -8,8 +8,8 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/core/types"
 
-	"git.proxeus.com/core/central/lib/blockchain/bctypes"
-	"git.proxeus.com/core/central/lib/blockchain/ethereum"
+	"github.com/ProxeusApp/storage-app/lib/blockchain/bctypes"
+	"github.com/ProxeusApp/storage-app/lib/blockchain/ethereum"
 )
 
 type TestcontractContract struct {
