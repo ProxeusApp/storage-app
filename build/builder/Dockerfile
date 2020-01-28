@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM ubuntu:19.10
 
 # Install deps
 RUN set -x; \
@@ -25,7 +25,7 @@ RUN set -x; \
  && apt-get clean
 
 # Instal mingw for windows cross compilation
-RUN apt-get install -y -q mingw-w64
+RUN apt-get install -y -q mingw-w64 build-essential
 
 # Install golang
 ARG go_version="1.13.4"
@@ -68,6 +68,6 @@ RUN mkdir -p "/tmp/osxcross"                                                    
 
 RUN cd /tmp/osxcross \
  && UNATTENDED=1 ./build.sh
- 
+
 ENV PATH "/tmp/osxcross/target/bin:${PATH}"
 ENV PATH "/go/bin:${PATH}"
