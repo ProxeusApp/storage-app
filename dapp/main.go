@@ -147,7 +147,6 @@ func copyResources(dataDir string) {
 		}
 		err = ioutil.WriteFile(filepath.Join(resDir, fname), b, 0644)
 		if err != nil {
-			// TODO: in OSX dmg these files are read-only, we need to find solution
 			astilog.Warn(err)
 		}
 	}

@@ -14,8 +14,6 @@ import (
 	contract2 "github.com/ProxeusApp/storage-app/lib/blockchain/generator/ethereum/go"
 )
 
-//TODO: Nice Tests, Multiple Value Events, Return Values Calls, Glue/Binding Generator
-
 func TestEndToEndDeploy(t *testing.T) {
 	t.SkipNow()
 	const defaultEthURL = "https://ropsten.infura.io/v3/"

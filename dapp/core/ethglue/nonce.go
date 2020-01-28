@@ -68,7 +68,6 @@ func (n *NonceManager) OnError(err error) {
 	if err.Error() == "nonce too low" {
 		// either transaction(s) from different machine or
 		// somehow transaction not failing instantly but not increasing nonce as well
-		// TODO(mmal): investigate theoretical possibility of the second case
 		n.nextNonce = n.pendingNonceFromNode()
 		log.Errorf("[NonceManager]: synced (forward jump) pendingNonce with network: %v", n.nextNonce.Int64())
 		return
@@ -85,13 +84,6 @@ func (n *NonceManager) OnError(err error) {
 	n.errStreakCount++
 	if n.errStreakCount >= maxErrStreak {
 		n.errStreakCount = 0
-		//TODO(mmal): we should cancel transactions if decreasing nonce (filling the gap) but
-		// it is a eth protocol "workaround" as there is no way to officially cancel
-		// and costly - requires fake transactions with >10% more gas price
-		// looks like when sending new transaction with repeating nonce
-		// the transaction with higher price will win (old or new) which means that when the
-		// gap closes (our pending nonce reaches network nonce) we will have old stalled
-		// transaction executed - possibly out of order and partially
 		n.nextNonce = n.pendingNonceFromNode()
 		log.Errorf("[NonceManager]: synced pendingNonce with network: %v", n.nextNonce.Int64())
 		return
@@ -104,7 +96,6 @@ func (n *NonceManager) OnError(err error) {
 func (n *NonceManager) pendingNonceFromNode() *big.Int {
 	ctx, cancel := context.WithTimeout(context.TODO(), time.Duration(20*time.Second))
 	defer cancel()
-	//TODO(mmal): unify eth connection management
 	no, e := n.ethClient.PendingNonceAt(ctx, n.ethAccount)
 	if e != nil {
 		log.Errorf("[NonceManager]: pendingNonceAt err %v", e)

@@ -24,7 +24,6 @@ type TestcontractContract struct {
 }
 
 //Functions
-//TODO: Functions should be generated based on ABI
 
 func (con *TestcontractContract) Testfunction(ethclient *ethereum.ETHClient, account bctypes.Account, parameter1 string) (*bctypes.Transaction, error) {
 	transaction, err := con.createTransaction("Testfunction")

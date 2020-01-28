@@ -131,7 +131,6 @@ type GasEstimate struct {
 type Quote struct {
 	FileHash  string          `json:"fileHash"`
 	Providers []QuoteProvider `json:"providers"`
-	// TODO: EstimatedGas float32 `json:"estimatedGas"`
 }
 
 type QuoteProvider struct {
@@ -1047,7 +1046,6 @@ func (me *App) downloadFromDroparea(filepath string, url string) error {
 }
 
 //return err if the event should be fired again
-//TODO(ave) pls note mmal  search key [N_O_T_E] impl. how to Add and Push single notifications
 func (me *App) ethereumListener(tx *ethereum.PendingTx, txHash, status string) error {
 	m := map[string]interface{}{
 		"status":    status,

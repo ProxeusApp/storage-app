@@ -33,7 +33,6 @@ type (
 	}
 )
 
-// TODO(mmal): migrate to storage/kv pkg
 func NewKVStore(path string) (*KVStore, error) {
 	storeIF, err := newKVTypeBoltDB()
 	if err != nil {

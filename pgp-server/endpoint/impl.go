@@ -14,7 +14,7 @@ import (
 	"github.com/ProxeusApp/storage-app/spp/fs"
 )
 
-var ProxeusFS *fs.ProxeusFS //TODO: coupling to ProxeusFS doesn't seem to be needed
+var ProxeusFS *fs.ProxeusFS
 
 func AddPublicKey(c echo.Context) error {
 	params := struct {

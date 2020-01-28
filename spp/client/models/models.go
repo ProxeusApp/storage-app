@@ -8,7 +8,6 @@ import (
 )
 
 type StorageProviderInfo struct {
-	// TODO: First block used by dApp layer only. Struct conversion to different layer should be discussed
 	Address string `json:"address,omitempty"`
 	URL     string `json:"url,omitempty"`
 	Online  bool   `json:"isOnline,omitempty"`

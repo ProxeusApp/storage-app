@@ -85,7 +85,6 @@ var (
 	ErrPaymentDoesNotMatch = errors.New("spp: received and calculated xes do not match")
 )
 
-// TODO: Third parameter ProviderInfoService can be nil until we separate filesystem from storage provider
 func NewProxeusFS(cfg *config.Configuration, ethConn FsClientInterface, fileMetaHandler FileMetaHandlerInterface, providerInfoService service.ProviderInfoService) (*ProxeusFS, error) {
 	if cfg.StorageDir != "" {
 		err := os.MkdirAll(cfg.StorageDir, 0700)

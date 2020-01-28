@@ -17,30 +17,6 @@ type (
 		currentAccount string
 	}
 
-	/**
-	TODO(ave) ->>>> pls note mmal hope it helps.. if not remove it
-	search key [N_O_T_E]
-
-	Notification simple
-
-	/----------------------------------------/
-	/---Title-----------------------------X--/
-	/----------------------------------------/
-	/---Description--------------------------/
-	/----------------------------------------/
-
-
-	Notification complex
-
-	/----------------------------------------/
-	/---Title-----------------------------X--/
-	/----------------------------------------/
-	/---Description--------------------------/
-	/--------------------------[Action]------/
-
-	handled by the frontend according to the notification type
-
-	*/
 	Notification struct {
 		ID        string                 `json:"id"`
 		Type      string                 `json:"type"`
