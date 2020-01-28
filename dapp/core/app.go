@@ -40,7 +40,7 @@ import (
 	"github.com/ProxeusApp/storage-app/dapp/core/file"
 	"github.com/ProxeusApp/storage-app/dapp/core/notification"
 	"github.com/ProxeusApp/storage-app/spp/config"
-	"git.proxeus.com/web/channelhub"
+	"github.com/ProxeusApp/storage-app/web"
 )
 
 type App struct {

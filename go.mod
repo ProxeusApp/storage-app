@@ -3,7 +3,6 @@ module github.com/ProxeusApp/storage-app
 go 1.13
 
 require (
-	git.proxeus.com/web/channelhub v0.0.0-20180522110548-1f56cac5fe3a
 	github.com/ProxeusApp/memcache v0.0.0-20180929082421-d57588e9767c
 	github.com/ProxeusApp/pgp v0.0.0-20181108103448-900acd1c2b92
 	github.com/ajg/form v0.0.0-20160802194845-cc2954064ec9 // indirect
@@ -26,6 +25,7 @@ require (
 	github.com/google/go-querystring v1.0.0 // indirect
 	github.com/google/uuid v1.1.0 // indirect
 	github.com/gorilla/sessions v1.1.3
+	github.com/gorilla/websocket v1.4.1-0.20190629185528-ae1634f6a989
 	github.com/hashicorp/golang-lru v0.5.0 // indirect
 	github.com/imkira/go-interpol v1.1.0 // indirect
 	github.com/k0kubun/colorstring v0.0.0-20150214042306-9440f1994b88 // indirect
