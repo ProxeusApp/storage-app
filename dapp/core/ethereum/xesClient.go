@@ -105,7 +105,7 @@ func (me *xesClient) isNotXesEventOrAlreadyExecuted(eventName string, lg *types.
 }
 
 func (me *xesClient) isXesEvent(eventName string, lg *types.Log) bool {
-	if len(lg.Topics) < 0 || !bytes.Equal(me.xesABI.Events[eventName].Id().Bytes(), lg.Topics[0].Bytes()) {
+	if len(lg.Topics) < 0 || !bytes.Equal(me.xesABI.Events[eventName].ID().Bytes(), lg.Topics[0].Bytes()) {
 		return false
 	}
 	return true

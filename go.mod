@@ -8,9 +8,10 @@ require (
 	github.com/ajg/form v0.0.0-20160802194845-cc2954064ec9 // indirect
 	github.com/aristanetworks/goarista v0.0.0-20181210134948-aa2a42e13be6 // indirect
 	github.com/asticode/go-astiamqp v1.0.0 // indirect
-	github.com/asticode/go-astilectron v0.6.0
+	github.com/asticode/go-astikit v0.2.0
+	github.com/asticode/go-astilectron v0.11.0
+	github.com/asticode/go-astilectron-bundler v0.3.0 // indirect
 	github.com/asticode/go-astilog v1.0.0
-	github.com/asticode/go-bindata v1.0.0 // indirect
 	github.com/atotto/clipboard v0.1.1
 	github.com/boltdb/bolt v1.3.1
 	github.com/btcsuite/btcd v0.0.0-20181130015935-7d2daa5bfef2 // indirect
