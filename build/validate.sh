@@ -1,10 +1,8 @@
 #!/bin/bash
 set -Eeuo pipefail
 
-# is dep in sync
-dep check
-
-# imports
+# is go mod in sync
+go mod verify
 
 installed () {
     which $1
@@ -15,7 +13,7 @@ require () {
 require goimports
 require gofmt
 
-if [[ "$(goimports -l -local git.proxeus.com main dapp/api dapp/core pgp-server spp \
+if [[ "$(goimports -l -local dapp/api dapp/core pgp-server spp \
  | grep -v bindata.go \
  | wc -l)" -ne "0" ]]
 then
@@ -28,7 +26,6 @@ fi
 #[ -z "$gofiles" ] && exit 0
 
 gofiles=$(find . -regex "^.*\.go$" \
-    | grep -v "^./vendor/" \
     | grep -v "^./artifacts/" \
     | grep -v "^./dapp/bind_" \
     | grep -v "/bindata.go$" \

@@ -1,10 +1,5 @@
 #!/bin/bash
 set -Eeuo pipefail
 
-# TODO: increase test scope
-go test \
-    `go list ./... | \
-    grep "central/main\|central/lib\|central/spp" | \
-    grep -v "central/main/handlers/assets" | \
-    grep -v "central/main$" | \
-    grep -v "central/spp/"`
+go test github.com/ProxeusApp/storage-app/dapp/... github.com/ProxeusApp/storage-app/pgp-server/...
+go test github.com/ProxeusApp/storage-app/spp github.com/ProxeusApp/storage-app/spp/client/... github.com/ProxeusApp/storage-app/spp/config/... github.com/ProxeusApp/storage-app/spp/endpoint/... github.com/ProxeusApp/storage-app/spp/fs/...

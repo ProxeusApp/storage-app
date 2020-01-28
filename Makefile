@@ -28,7 +28,7 @@ validate-ui:
 	make -C ui validate
 
 fmt:
-	goimports -w -local git.proxeus.com main dapp/api dapp/core pgp-server spp lib tools
+	goimports -w -local dapp/api dapp/core pgp-server spp lib
 	make -C ui fmt
 
 test:
