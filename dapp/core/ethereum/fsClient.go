@@ -330,7 +330,7 @@ func (me *fsClient) isNotProxeusFSEventOrWasExecutedAlready(eventName string, lg
 
 func (me *fsClient) isProxeusFSEvent(eventName string, lg *types.Log) bool {
 	if len(lg.Topics) > 0 {
-		if bytes.Equal(me.proxeusFSABI.Events[eventName].Id().Bytes(), lg.Topics[0].Bytes()) {
+		if bytes.Equal(me.proxeusFSABI.Events[eventName].ID().Bytes(), lg.Topics[0].Bytes()) {
 			return true
 		}
 	}

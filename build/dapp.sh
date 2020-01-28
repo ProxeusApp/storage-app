@@ -15,6 +15,7 @@ echo "Bundling electron..."
 
  ./build/run-in-docker.sh builder "
         # make sure electron bundler is synchronized
-        go install ./vendor/github.com/asticode/go-astilectron-bundler/astilectron-bundler
-        cd dapp && GOCACHE=$(go env GOCACHE) astilectron-bundler -c bundler_"${TARGET}".json -v
+        go get -u github.com/asticode/go-astilectron-bundler/...
+        go install github.com/asticode/go-astilectron-bundler/astilectron-bundler
+        cd dapp && astilectron-bundler -c bundler_"${TARGET}".json
      "

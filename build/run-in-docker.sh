@@ -19,7 +19,7 @@ function chown-artifacts {
 trap chown-artifacts EXIT
 
 sudo docker run --rm \
-    --workdir /go/src/git.proxeus.com/core/central \
-    -v $(go env GOPATH)/src/git.proxeus.com/core/central:/go/src/git.proxeus.com/core/central \
+    --workdir /go/src/github.com/ProxeusApp/storage-app \
+    -v $(pwd):/go/src/github.com/ProxeusApp/storage-app \
     "${1}" /bin/sh -c \
     "${2}"

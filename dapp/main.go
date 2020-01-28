@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"github.com/asticode/go-astikit"
 	"io"
 	"io/ioutil"
 	"log"
@@ -153,7 +154,7 @@ func copyResources(dataDir string) {
 }
 
 func electronInstance(dataDir string) *astilectron.Astilectron {
-	a, err := astilectron.New(astilectron.Options{
+	a, err := astilectron.New(nil, astilectron.Options{
 		AppName:            appName,
 		AppIconDefaultPath: "res/icon.png",
 		AppIconDarwinPath:  "res/icon.icns",
@@ -175,11 +176,11 @@ func electronInstance(dataDir string) *astilectron.Astilectron {
 		Asset    string
 	}{
 		{
-			Filename: fmt.Sprintf("astilectron-v%s.zip", astilectron.VersionAstilectron),
+			Filename: fmt.Sprintf("astilectron-v%s.zip", astilectron.DefaultVersionAstilectron),
 			Asset:    "vendor_astilectron_bundler/astilectron.zip",
 		},
 		{
-			Filename: fmt.Sprintf("electron-%s-%s-v%s.zip", runtime.GOOS, runtime.GOARCH, astilectron.VersionElectron),
+			Filename: fmt.Sprintf("electron-%s-%s-v%s.zip", runtime.GOOS, runtime.GOARCH, astilectron.DefaultVersionElectron),
 			Asset:    "vendor_astilectron_bundler/electron.zip",
 		},
 	}
@@ -202,11 +203,11 @@ func startElectron(a *astilectron.Astilectron) {
 		panic(err)
 	}
 	w, err := a.NewWindow(fmt.Sprintf("http://%s/", localAddr), &astilectron.WindowOptions{
-		Title:    astilectron.PtrStr(appName),
-		Center:   astilectron.PtrBool(true),
-		Height:   astilectron.PtrInt(800),
-		Width:    astilectron.PtrInt(1200), //1200 because with 1000 windows login tour step 1 view is broken
-		MinWidth: astilectron.PtrInt(900),
+		Title:    astikit.StrPtr(appName),
+		Center:   astikit.BoolPtr(true),
+		Height:   astikit.IntPtr(800),
+		Width:    astikit.IntPtr(1200), //1200 because with 1000 windows login tour step 1 view is broken
+		MinWidth: astikit.IntPtr(900),
 		//inject electron and current os into window (see: https://github.com/asticode/astilectron/blob/v0.27.0/main.js#L483)
 		Custom: &astilectron.WindowCustomOptions{
 			Script: fmt.Sprintf("const electron = require('electron'); const osPlatform = '%s'", runtime.GOOS),
@@ -231,10 +232,10 @@ func showWindowWithError(a *astilectron.Astilectron, title, message string) {
 	}
 
 	w, err := a.NewWindow("http://127.0.0.1", &astilectron.WindowOptions{
-		Title:  astilectron.PtrStr(appName),
-		Center: astilectron.PtrBool(true),
-		Width:  astilectron.PtrInt(640),
-		Height: astilectron.PtrInt(480),
+		Title:  astikit.StrPtr(appName),
+		Center: astikit.BoolPtr(true),
+		Width:  astikit.IntPtr(640),
+		Height: astikit.IntPtr(480),
 		Custom: &astilectron.WindowCustomOptions{
 			Script: fmt.Sprintf("astilectron.showErrorBox('%s', '%s');", title, message),
 		},
