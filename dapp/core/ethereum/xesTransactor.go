@@ -132,7 +132,6 @@ func (me *xesTransactor) xesApprove(ethPrivKeyFrom string, ethAddressTo string, 
 	return tx, nil
 }
 
-// TODO(mmal): proper harness for tests
 var TestingModeBreakGas bool
 
 func (me *xesTransactor) xesApproveToProxeusFSEstimateGas(ethPrivKeyFrom string, xesAmount *big.Int) (*bind.TransactOpts, error) {

@@ -74,7 +74,6 @@ func Apply() error {
 
 	pu := updatedExecPath()
 
-	//TODO(mmal): try to use https://github.com/google/renameio
 	err = os.Rename(p, p+".old")
 	defer func() {
 		if err != nil {

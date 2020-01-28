@@ -12,8 +12,6 @@ import (
 	"github.com/labstack/echo"
 )
 
-// TODO(mmal): deprecate
-
 type Embedded struct {
 	Asset func(name string) ([]byte, error)
 }
