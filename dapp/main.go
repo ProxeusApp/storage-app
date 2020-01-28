@@ -17,7 +17,7 @@ import (
 	"syscall"
 	"time"
 
-	"git.proxeus.com/core/central/dapp/core/updater"
+	"github.com/ProxeusApp/storage-app/dapp/core/updater"
 	"github.com/asticode/go-astilectron"
 	"github.com/asticode/go-astilog"
 	"github.com/gorilla/sessions"
@@ -26,11 +26,11 @@ import (
 	"github.com/natefinch/lumberjack"
 	"github.com/sirupsen/logrus"
 
-	"git.proxeus.com/core/central/artifacts/dapp/resources"
-	"git.proxeus.com/core/central/artifacts/dapp/spp"
-	"git.proxeus.com/core/central/dapp/api"
-	"git.proxeus.com/core/central/dapp/embedded"
-	"git.proxeus.com/core/central/spp/config"
+	"github.com/ProxeusApp/storage-app/artifacts/dapp/resources"
+	"github.com/ProxeusApp/storage-app/artifacts/dapp/spp"
+	"github.com/ProxeusApp/storage-app/dapp/api"
+	"github.com/ProxeusApp/storage-app/dapp/embedded"
+	"github.com/ProxeusApp/storage-app/spp/config"
 )
 
 //go:generate go-bindata -pkg spp -o ../artifacts/dapp/spp/bindata.go -prefix ../artifacts/dapp/dist ../artifacts/dapp/dist/...

@@ -80,7 +80,7 @@
   name = "github.com/asticode/go-astilectron-bundler"
   packages = ["."]
   pruneopts = "T"
-  revision = "a4d21269905875dc2e1f8f21a04ec21b598b63f8"
+  revision = "f01ff943257903f5c077ff4b4ddf9758e4d52fa4"
 
 [[projects]]
   digest = "1:9f7b4f119265856bca400f7d1b5cfb17f0ce03b54df745a52f6d0cd992d00049"

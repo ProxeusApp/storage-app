@@ -6,13 +6,13 @@ import (
 	"math/big"
 	"testing"
 
-	"git.proxeus.com/core/central/dapp/core/util"
+	"github.com/ProxeusApp/storage-app/dapp/core/util"
 
 	"github.com/ethereum/go-ethereum/core/types"
 
 	"github.com/ethereum/go-ethereum/common"
 
-	"git.proxeus.com/core/central/spp/config"
+	"github.com/ProxeusApp/storage-app/spp/config"
 )
 
 //TODO impl ethereum.Client API tests

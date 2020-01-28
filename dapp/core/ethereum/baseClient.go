@@ -12,7 +12,7 @@ import (
 	"sync"
 	"time"
 
-	"git.proxeus.com/core/central/dapp/core/ethglue"
+	"github.com/ProxeusApp/storage-app/dapp/core/ethglue"
 
 	ethereum "github.com/ethereum/go-ethereum"
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
@@ -20,7 +20,7 @@ import (
 
 	"github.com/ethereum/go-ethereum/common"
 
-	"git.proxeus.com/core/central/dapp/core/embdb"
+	"github.com/ProxeusApp/storage-app/dapp/core/embdb"
 
 	cache "github.com/ProxeusApp/memcache"
 	"github.com/ethereum/go-ethereum/core/types"

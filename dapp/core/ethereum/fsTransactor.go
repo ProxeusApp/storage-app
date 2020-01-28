@@ -7,7 +7,7 @@ import (
 	"sync"
 	"time"
 
-	"git.proxeus.com/core/central/dapp/core/util"
+	"github.com/ProxeusApp/storage-app/dapp/core/util"
 
 	ethereum "github.com/ethereum/go-ethereum"
 	"github.com/ethereum/go-ethereum/accounts/abi"
@@ -15,9 +15,9 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/core/types"
 
-	"git.proxeus.com/core/central/dapp/core/embdb"
-	"git.proxeus.com/core/central/dapp/core/ethglue"
-	"git.proxeus.com/core/central/spp/eth"
+	"github.com/ProxeusApp/storage-app/dapp/core/embdb"
+	"github.com/ProxeusApp/storage-app/dapp/core/ethglue"
+	"github.com/ProxeusApp/storage-app/spp/eth"
 )
 
 const (

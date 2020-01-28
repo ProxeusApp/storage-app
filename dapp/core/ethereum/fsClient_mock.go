@@ -5,7 +5,7 @@ import (
 	"log"
 	"math/big"
 
-	"git.proxeus.com/core/central/spp/fs"
+	"github.com/ProxeusApp/storage-app/spp/fs"
 
 	"github.com/ethereum/go-ethereum/common"
 )

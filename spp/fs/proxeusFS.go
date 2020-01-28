@@ -11,9 +11,9 @@ import (
 	"path/filepath"
 	"time"
 
-	"git.proxeus.com/core/central/dapp/core/util"
+	"github.com/ProxeusApp/storage-app/dapp/core/util"
 
-	"git.proxeus.com/core/central/spp/service"
+	"github.com/ProxeusApp/storage-app/spp/service"
 
 	"sync"
 
@@ -21,9 +21,9 @@ import (
 	cache "github.com/patrickmn/go-cache"
 	uuid "github.com/satori/go.uuid"
 
-	"git.proxeus.com/core/central/lib/wallet"
-	"git.proxeus.com/core/central/spp/config"
-	"git.proxeus.com/core/central/spp/fs/db"
+	"github.com/ProxeusApp/storage-app/lib/wallet"
+	"github.com/ProxeusApp/storage-app/spp/config"
+	"github.com/ProxeusApp/storage-app/spp/fs/db"
 )
 
 type ProxeusFS struct {

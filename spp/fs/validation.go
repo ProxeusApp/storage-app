@@ -8,9 +8,9 @@ import (
 	"path/filepath"
 	"strings"
 
-	"git.proxeus.com/core/central/dapp/core/file/crypt"
+	"github.com/ProxeusApp/storage-app/dapp/core/file/crypt"
 
-	"git.proxeus.com/core/central/dapp/core/file/archive"
+	"github.com/ProxeusApp/storage-app/dapp/core/file/archive"
 )
 
 //verify all files of the archive are formatted as pgp-encrypted-file

@@ -5,7 +5,7 @@ import (
 	"log"
 	"os"
 
-	"git.proxeus.com/core/central/dapp/core/file/archive"
+	"github.com/ProxeusApp/storage-app/dapp/core/file/archive"
 
 	"github.com/ProxeusApp/pgp"
 )

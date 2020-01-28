@@ -7,7 +7,7 @@ import (
 
 	"errors"
 
-	"git.proxeus.com/core/central/spp/client/models"
+	"github.com/ProxeusApp/storage-app/spp/client/models"
 )
 
 /**

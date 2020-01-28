@@ -9,7 +9,7 @@ import (
 	"path/filepath"
 	"time"
 
-	"git.proxeus.com/core/central/dapp/core/ethglue"
+	"github.com/ProxeusApp/storage-app/dapp/core/ethglue"
 
 	ethereum "github.com/ethereum/go-ethereum"
 	"github.com/ethereum/go-ethereum/common"
@@ -17,8 +17,8 @@ import (
 	"github.com/ethereum/go-ethereum/crypto"
 	"github.com/ethereum/go-ethereum/ethclient"
 
-	"git.proxeus.com/core/central/spp/config"
-	"git.proxeus.com/core/central/spp/fs/db"
+	"github.com/ProxeusApp/storage-app/spp/config"
+	"github.com/ProxeusApp/storage-app/spp/fs/db"
 )
 
 type ProxeusFSDeleteEvent struct {

@@ -11,9 +11,9 @@ import (
 
 	"github.com/labstack/echo"
 
-	"git.proxeus.com/core/central/dapp/core/account"
-	"git.proxeus.com/core/central/dapp/core/file"
-	"git.proxeus.com/core/central/spp/client/models"
+	"github.com/ProxeusApp/storage-app/dapp/core/account"
+	"github.com/ProxeusApp/storage-app/dapp/core/file"
+	"github.com/ProxeusApp/storage-app/spp/client/models"
 )
 
 type (

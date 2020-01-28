@@ -9,7 +9,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"git.proxeus.com/core/central/dapp/core"
+	"github.com/ProxeusApp/storage-app/dapp/core"
 )
 
 var App *core.App

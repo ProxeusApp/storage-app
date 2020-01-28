@@ -8,17 +8,17 @@ import (
 	"testing"
 	"time"
 
-	"git.proxeus.com/core/central/dapp/core/util"
+	"github.com/ProxeusApp/storage-app/dapp/core/util"
 
 	"log"
 
 	"github.com/ethereum/go-ethereum/crypto"
 	httpexpect "gopkg.in/gavv/httpexpect.v1"
 
-	"git.proxeus.com/core/central/dapp/core/ethereum"
-	"git.proxeus.com/core/central/spp/config"
-	"git.proxeus.com/core/central/spp/fs"
-	"git.proxeus.com/core/central/spp/service"
+	"github.com/ProxeusApp/storage-app/dapp/core/ethereum"
+	"github.com/ProxeusApp/storage-app/spp/config"
+	"github.com/ProxeusApp/storage-app/spp/fs"
+	"github.com/ProxeusApp/storage-app/spp/service"
 )
 
 func serverURL() string {
