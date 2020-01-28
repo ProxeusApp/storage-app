@@ -3,7 +3,6 @@
 .DS_Store
 
 artifacts/*
-!artifacts/cache
 SHOULD_INIT
 
 node_modules
