@@ -8,15 +8,15 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/core/types"
 
-	"git.proxeus.com/core/central/dapp/core/ethereum"
-	"git.proxeus.com/core/central/spp/service"
+	"github.com/ProxeusApp/storage-app/dapp/core/ethereum"
+	"github.com/ProxeusApp/storage-app/spp/service"
 
 	"github.com/labstack/echo"
 
-	"git.proxeus.com/core/central/lib/default_server"
-	"git.proxeus.com/core/central/spp/config"
-	"git.proxeus.com/core/central/spp/endpoint"
-	"git.proxeus.com/core/central/spp/fs"
+	"github.com/ProxeusApp/storage-app/lib/default_server"
+	"github.com/ProxeusApp/storage-app/spp/config"
+	"github.com/ProxeusApp/storage-app/spp/endpoint"
+	"github.com/ProxeusApp/storage-app/spp/fs"
 )
 
 const settingsFilename = "./settings.json"

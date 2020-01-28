@@ -13,8 +13,8 @@ import (
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
 
-	"git.proxeus.com/core/central/dapp/api"
-	"git.proxeus.com/core/central/spp/config"
+	"github.com/ProxeusApp/storage-app/dapp/api"
+	"github.com/ProxeusApp/storage-app/spp/config"
 )
 
 func main() {

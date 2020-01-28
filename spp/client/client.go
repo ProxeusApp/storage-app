@@ -14,7 +14,7 @@ import (
 
 	cache "github.com/ProxeusApp/memcache"
 
-	"git.proxeus.com/core/central/spp/client/models"
+	"github.com/ProxeusApp/storage-app/spp/client/models"
 )
 
 var (

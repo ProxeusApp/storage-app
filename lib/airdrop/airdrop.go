@@ -14,8 +14,8 @@ import (
 	"github.com/ethereum/go-ethereum/core/types"
 	"github.com/ethereum/go-ethereum/ethclient"
 
-	"git.proxeus.com/core/central/dapp/core/ethglue"
-	"git.proxeus.com/core/central/lib/wallet"
+	"github.com/ProxeusApp/storage-app/dapp/core/ethglue"
+	"github.com/ProxeusApp/storage-app/lib/wallet"
 )
 
 const fromAddress = "38ba9213c70bf6fe34f70cfc5c9b26707c6c1e85"

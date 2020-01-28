@@ -5,12 +5,12 @@ import (
 	"path/filepath"
 	"sync"
 
-	"git.proxeus.com/core/central/spp/fs"
+	"github.com/ProxeusApp/storage-app/spp/fs"
 
 	"github.com/ethereum/go-ethereum/core/types"
 	"github.com/ethereum/go-ethereum/ethclient"
 
-	"git.proxeus.com/core/central/spp/eth"
+	"github.com/ProxeusApp/storage-app/spp/eth"
 
 	"github.com/ethereum/go-ethereum/common"
 )

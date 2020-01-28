@@ -14,7 +14,7 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/crypto"
 
-	"git.proxeus.com/core/central/dapp/core/ethglue"
+	"github.com/ProxeusApp/storage-app/dapp/core/ethglue"
 )
 
 // Keystore is a fixed keystore bases on the ropsten server wallet TODO have different keystores for different environments

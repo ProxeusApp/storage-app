@@ -12,16 +12,16 @@ import (
 	"runtime"
 	"time"
 
-	"git.proxeus.com/core/central/dapp/api/endpoints"
+	"github.com/ProxeusApp/storage-app/dapp/api/endpoints"
 
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
 
-	"git.proxeus.com/core/central/dapp/core"
-	"git.proxeus.com/core/central/dapp/core/account"
-	"git.proxeus.com/core/central/dapp/core/file"
-	"git.proxeus.com/core/central/dapp/core/notification"
-	"git.proxeus.com/core/central/spp/config"
+	"github.com/ProxeusApp/storage-app/dapp/core"
+	"github.com/ProxeusApp/storage-app/dapp/core/account"
+	"github.com/ProxeusApp/storage-app/dapp/core/file"
+	"github.com/ProxeusApp/storage-app/dapp/core/notification"
+	"github.com/ProxeusApp/storage-app/spp/config"
 	"git.proxeus.com/web/channelhub"
 )
 

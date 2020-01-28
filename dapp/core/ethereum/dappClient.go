@@ -12,8 +12,8 @@ import (
 	"strings"
 	"sync"
 
-	"git.proxeus.com/core/central/dapp/core/util"
-	"git.proxeus.com/core/central/spp/fs"
+	"github.com/ProxeusApp/storage-app/dapp/core/util"
+	"github.com/ProxeusApp/storage-app/spp/fs"
 
 	"github.com/ethereum/go-ethereum/accounts/abi"
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
@@ -22,8 +22,8 @@ import (
 	"github.com/ethereum/go-ethereum/crypto"
 	"github.com/ethereum/go-ethereum/ethclient"
 
-	"git.proxeus.com/core/central/dapp/core/ethglue"
-	"git.proxeus.com/core/central/spp/eth"
+	"github.com/ProxeusApp/storage-app/dapp/core/ethglue"
+	"github.com/ProxeusApp/storage-app/spp/eth"
 )
 
 type (

@@ -13,11 +13,11 @@ import (
 
 	cache "github.com/ProxeusApp/memcache"
 
-	"git.proxeus.com/core/central/dapp/core/account"
-	"git.proxeus.com/core/central/dapp/core/embdb"
-	"git.proxeus.com/core/central/spp/client"
-	"git.proxeus.com/core/central/spp/config"
-	"git.proxeus.com/core/central/spp/fs"
+	"github.com/ProxeusApp/storage-app/dapp/core/account"
+	"github.com/ProxeusApp/storage-app/dapp/core/embdb"
+	"github.com/ProxeusApp/storage-app/spp/client"
+	"github.com/ProxeusApp/storage-app/spp/config"
+	"github.com/ProxeusApp/storage-app/spp/fs"
 )
 
 const (

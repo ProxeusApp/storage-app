@@ -9,9 +9,9 @@ import (
 
 	"github.com/labstack/echo"
 
-	"git.proxeus.com/core/central/lib/airdrop"
-	"git.proxeus.com/core/central/pgp-server/storage"
-	"git.proxeus.com/core/central/spp/fs"
+	"github.com/ProxeusApp/storage-app/lib/airdrop"
+	"github.com/ProxeusApp/storage-app/pgp-server/storage"
+	"github.com/ProxeusApp/storage-app/spp/fs"
 )
 
 var ProxeusFS *fs.ProxeusFS //TODO: coupling to ProxeusFS doesn't seem to be needed

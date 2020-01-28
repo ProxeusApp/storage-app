@@ -6,7 +6,7 @@ import (
 
 	"github.com/labstack/echo"
 
-	"git.proxeus.com/core/central/dapp/core/account"
+	"github.com/ProxeusApp/storage-app/dapp/core/account"
 )
 
 func AccountImportAndLogin(c echo.Context) error {

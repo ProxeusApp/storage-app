@@ -7,12 +7,12 @@ import (
 	"os"
 	"strconv"
 
-	"git.proxeus.com/core/central/spp/client/models"
+	"github.com/ProxeusApp/storage-app/spp/client/models"
 
 	"github.com/labstack/echo"
 
-	"git.proxeus.com/core/central/dapp/core/ethereum"
-	"git.proxeus.com/core/central/spp/fs"
+	"github.com/ProxeusApp/storage-app/dapp/core/ethereum"
+	"github.com/ProxeusApp/storage-app/spp/fs"
 )
 
 var ProxeusFS *fs.ProxeusFS

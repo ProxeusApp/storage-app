@@ -14,8 +14,8 @@ import (
 	"sort"
 	"time"
 
-	"git.proxeus.com/core/central/dapp/core/account/pgpService"
-	"git.proxeus.com/core/central/dapp/core/embdb"
+	"github.com/ProxeusApp/storage-app/dapp/core/account/pgpService"
+	"github.com/ProxeusApp/storage-app/dapp/core/embdb"
 )
 
 type (

@@ -9,7 +9,7 @@ import (
 
 	"github.com/ethereum/go-ethereum/common"
 
-	"git.proxeus.com/core/central/dapp/core/embdb"
+	"github.com/ProxeusApp/storage-app/dapp/core/embdb"
 )
 
 type (

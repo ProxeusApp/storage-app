@@ -8,11 +8,11 @@ import (
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
 
-	"git.proxeus.com/core/central/lib/default_server"
-	"git.proxeus.com/core/central/pgp-server/endpoint"
-	"git.proxeus.com/core/central/pgp-server/storage"
-	"git.proxeus.com/core/central/spp/config"
-	"git.proxeus.com/core/central/spp/fs"
+	"github.com/ProxeusApp/storage-app/lib/default_server"
+	"github.com/ProxeusApp/storage-app/pgp-server/endpoint"
+	"github.com/ProxeusApp/storage-app/pgp-server/storage"
+	"github.com/ProxeusApp/storage-app/spp/config"
+	"github.com/ProxeusApp/storage-app/spp/fs"
 )
 
 var storageDir string

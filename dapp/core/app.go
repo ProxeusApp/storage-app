@@ -19,27 +19,27 @@ import (
 	"sync"
 	"time"
 
-	"git.proxeus.com/core/central/dapp/core/util"
+	"github.com/ProxeusApp/storage-app/dapp/core/util"
 
-	"git.proxeus.com/core/central/dapp/core/embdb"
+	"github.com/ProxeusApp/storage-app/dapp/core/embdb"
 
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 
-	"git.proxeus.com/core/central/spp/client"
-	"git.proxeus.com/core/central/spp/client/models"
+	"github.com/ProxeusApp/storage-app/spp/client"
+	"github.com/ProxeusApp/storage-app/spp/client/models"
 
-	"git.proxeus.com/core/central/dapp/core/updater"
+	"github.com/ProxeusApp/storage-app/dapp/core/updater"
 
 	cache "github.com/ProxeusApp/memcache"
 	"github.com/ethereum/go-ethereum/common"
 
 	"github.com/atotto/clipboard"
 
-	"git.proxeus.com/core/central/dapp/core/account"
-	"git.proxeus.com/core/central/dapp/core/ethereum"
-	"git.proxeus.com/core/central/dapp/core/file"
-	"git.proxeus.com/core/central/dapp/core/notification"
-	"git.proxeus.com/core/central/spp/config"
+	"github.com/ProxeusApp/storage-app/dapp/core/account"
+	"github.com/ProxeusApp/storage-app/dapp/core/ethereum"
+	"github.com/ProxeusApp/storage-app/dapp/core/file"
+	"github.com/ProxeusApp/storage-app/dapp/core/notification"
+	"github.com/ProxeusApp/storage-app/spp/config"
 	"git.proxeus.com/web/channelhub"
 )
 

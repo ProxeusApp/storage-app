@@ -10,8 +10,8 @@ import (
 	"strings"
 	"time"
 
-	"git.proxeus.com/core/central/dapp/core/util"
-	"git.proxeus.com/core/central/spp/fs"
+	"github.com/ProxeusApp/storage-app/dapp/core/util"
+	"github.com/ProxeusApp/storage-app/spp/fs"
 
 	cache "github.com/ProxeusApp/memcache"
 	"github.com/ethereum/go-ethereum/accounts/abi"
@@ -19,8 +19,8 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/core/types"
 
-	"git.proxeus.com/core/central/dapp/core/embdb"
-	"git.proxeus.com/core/central/spp/eth"
+	"github.com/ProxeusApp/storage-app/dapp/core/embdb"
+	"github.com/ProxeusApp/storage-app/spp/eth"
 )
 
 type (

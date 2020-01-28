@@ -20,10 +20,10 @@ import (
 
 	"github.com/disintegration/imaging"
 
-	"git.proxeus.com/core/central/dapp/core/file/archive"
-	"git.proxeus.com/core/central/dapp/core/file/crypt"
+	"github.com/ProxeusApp/storage-app/dapp/core/file/archive"
+	"github.com/ProxeusApp/storage-app/dapp/core/file/crypt"
 
-	"git.proxeus.com/core/central/dapp/core/notification"
+	"github.com/ProxeusApp/storage-app/dapp/core/notification"
 	"git.proxeus.com/web/channelhub"
 
 	"context"
@@ -33,10 +33,10 @@ import (
 	"github.com/ethereum/go-ethereum/crypto"
 	"github.com/pborman/uuid"
 
-	"git.proxeus.com/core/central/dapp/core/account"
-	"git.proxeus.com/core/central/spp/client"
-	"git.proxeus.com/core/central/spp/config"
-	"git.proxeus.com/core/central/spp/fs"
+	"github.com/ProxeusApp/storage-app/dapp/core/account"
+	"github.com/ProxeusApp/storage-app/spp/client"
+	"github.com/ProxeusApp/storage-app/spp/config"
+	"github.com/ProxeusApp/storage-app/spp/fs"
 )
 
 type (
