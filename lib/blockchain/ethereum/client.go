@@ -146,7 +146,7 @@ func (eth *ETHClient) Call(contract bctypes.Contract, account bctypes.Account, t
 			fmt.Println(err)
 		} else {
 			transaction.Mined = true
-			trr := bctypes.TransactionResult{receipt}
+			trr := bctypes.TransactionResult{Receipt: receipt}
 			transaction.Result = &trr
 		}
 	}()
@@ -175,6 +175,7 @@ func (eth *ETHClient) SetupListener(address common.Address, fromBlock uint64, ch
 	}
 
 	ctx, cancelFunc := context.WithTimeout(ctx, DefaultContextTimeout)
+	defer cancelFunc()
 
 	logChan := make(chan types.Log)
 	//Passing Logs/Events to outer Channel and closing when done
@@ -198,7 +199,6 @@ func (eth *ETHClient) SetupListener(address common.Address, fromBlock uint64, ch
 		close(logChan)
 		return err
 	}
-	cancelFunc()
 
 	//Querying past Events from Block
 	eth.FetchEvents(address, fromBlock, channel)
@@ -219,6 +219,7 @@ func (eth *ETHClient) FetchEvents(address common.Address, fromBlock uint64, chan
 	}
 	ctx := context.Background()
 	ctx, cancelFunc := context.WithTimeout(ctx, DefaultContextTimeout)
+	defer cancelFunc()
 	//Querying past Events from Block
 	var logs []types.Log
 	fromblockquery := ethereum.FilterQuery{
@@ -234,7 +235,6 @@ func (eth *ETHClient) FetchEvents(address common.Address, fromBlock uint64, chan
 			eth.forwardOnce(&channel, *bctypes.FromLog(n))
 		}
 	}()
-	cancelFunc()
 	return nil
 }
 

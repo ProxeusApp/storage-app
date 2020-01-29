@@ -25,7 +25,7 @@ const (
 
 type (
 	Client struct {
-		client *client `json:"-"`
+		client *client
 	}
 
 	client struct {

@@ -25,6 +25,8 @@ fi
 #gofiles=$(git diff --cached --name-only --diff-filter=ACM | grep '\.go$')
 #[ -z "$gofiles" ] && exit 0
 
+go vet github.com/ProxeusApp/storage-app/dapp/... github.com/ProxeusApp/storage-app/spp/... github.com/ProxeusApp/storage-app/pgp-server/... github.com/ProxeusApp/storage-app/lib/... github.com/ProxeusApp/storage-app/web/...
+
 gofiles=$(find . -regex "^.*\.go$" \
     | grep -v "^./artifacts/" \
     | grep -v "^./dapp/bind_" \
