@@ -122,12 +122,13 @@ func (n *NonceManager) DebugDecrease() {
 func (n *NonceManager) DebugForceIdle() {
 	n.mu.Lock()
 	defer n.mu.Unlock()
-	n.lastNonceChange = time.Time{}
+	n.lastNonceChange = time.Now().Add(-(time.Minute*idleSyncTimeInMinutes + 1))
 }
 
 // false doesn't mean we are incorrect!
 func (n *NonceManager) DebugNonceEqualsNetwork() bool {
 	n.mu.Lock()
 	defer n.mu.Unlock()
-	return n.nextNonce.Cmp(n.pendingNonceFromNode()) == 0
+	pendingNonce := n.pendingNonceFromNode()
+	return n.nextNonce.Cmp(pendingNonce.Add(pendingNonce, big.NewInt(1))) == 0
 }
