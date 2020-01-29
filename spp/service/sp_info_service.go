@@ -31,21 +31,15 @@ type FileProviderInfoService struct {
 	serviceProviderInfo *models.StorageProviderInfo // Cached settings
 }
 
-func NewProviderInfoService(filename string) (ProviderInfoService, error) {
+func NewProviderInfoService(filePath string) (ProviderInfoService, error) {
 	providerInfoService := &FileProviderInfoService{
-		filename: filename,
+		filename: filepath.Base(filePath),
 	}
 
-	wd, err := os.Getwd()
-	if err != nil {
-		return providerInfoService, err
-	}
-	relFilePath := filepath.Join(wd, "settings.json")
-
-	configFile, err := os.Open(relFilePath)
+	configFile, err := os.Open(filePath)
 	defer configFile.Close()
 	if err != nil {
-		return providerInfoService, errors.New("Can't open " + filename + ". " + err.Error())
+		return providerInfoService, errors.New("Can't open " + filePath + ". " + err.Error())
 	}
 	jsonParser := json.NewDecoder(configFile)
 	err = jsonParser.Decode(&providerInfoService.serviceProviderInfo)

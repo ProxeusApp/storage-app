@@ -1,5 +1,3 @@
-// +build ignore
-
 package service
 
 import (
@@ -22,7 +20,10 @@ func TestMain(m *testing.M) {
 }
 
 func TestFileIsReadCorrectly(t *testing.T) {
-	file, _ := ioutil.TempFile(tmpPath, "settings-test-file")
+	file, err := ioutil.TempFile(tmpPath, "settings-test-file")
+	if err != nil {
+		t.Error(err)
+	}
 	jsonSettings := models.StorageProviderInfo{
 		Name: "Test settings",
 	}

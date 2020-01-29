@@ -3,6 +3,8 @@ package main
 import (
 	"encoding/json"
 	"log"
+	"os"
+	"path/filepath"
 	"time"
 
 	"github.com/ethereum/go-ethereum/common"
@@ -19,7 +21,7 @@ import (
 	"github.com/ProxeusApp/storage-app/spp/fs"
 )
 
-const settingsFilename = "./settings.json"
+const settingsFilename = "settings.json"
 
 var cfg *config.Configuration
 var sppWorkerRunning chan bool
@@ -29,7 +31,12 @@ func main() {
 	var err error
 	cfg = &config.Config
 
-	providerInfoService, err := service.NewProviderInfoService(settingsFilename)
+	wd, err := os.Getwd()
+	if err != nil {
+		log.Panic(err)
+	}
+	filePath := filepath.Join(wd, settingsFilename)
+	providerInfoService, err := service.NewProviderInfoService(filePath)
 	if err != nil {
 		log.Panic(err)
 	}
