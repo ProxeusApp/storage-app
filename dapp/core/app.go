@@ -106,7 +106,6 @@ type FileInfo struct {
 	ReadAccess                           []*account.AddressBookEntry `json:"readAccess"`
 	DefinedSigners                       []*account.AddressBookEntry `json:"definedSigners"`
 	Signers                              []*account.AddressBookEntry `json:"signers"`
-	//Menu                 Options                     `json:"menu"`
 }
 
 type EventMsg struct {
@@ -501,16 +500,6 @@ func (me *App) fileInfoUpdate(fileHashOrder *ethereum.FileHashOrder) {
 	} else {
 		nfi.SignatureStatus = 2
 	}
-	//valid, vsigners, err := me.ETHClient.FileVerify(nfi.ID, true)
-
-	//TODO decide if this should be removed
-	//signable := len(signers) > len(nfi.Signers)
-	//nfi.Menu = Options{
-	//	Share:              iAmTheOwner,
-	//	SendSigningRequest: fi.FileType.Int64() == 2 && signable,
-	//	Hide:             !nfi.Removed && iAmTheOwner,
-	//	Revoke:             len(nfi.ReadAccess) > 0,
-	//}
 
 	me.searchLock.RLock()
 	doNotProceed := grpID != fmt.Sprintf("%v-%v-%v-%v-%v", me.MyFiles, me.SharedWithMe, me.SignedByMe, me.ExpiredFiles, me.SearchTxt)

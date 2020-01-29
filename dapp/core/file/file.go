@@ -155,7 +155,6 @@ func NewHandler(cfg *config.Configuration, wallet *account.Wallet, storageDir, u
 	}
 	fh.fileDownloadScheduledCache = cache.New(30 * time.Second)
 	fh.uploadDownloadSync = make(map[string]*uploadDownloadStatus)
-	//TODO account usage concurrent
 	fh.wallet = wallet
 	fh.uploader, err = NewUploader(cfg, accountGetter, &fh.waitWorkerGrp, &fh.closing, &fh.stopAll, &fh.uploadDownloadSync, &fh.uploadDownloadSyncMutex,
 		wallet, userAccountDir)
@@ -1187,7 +1186,6 @@ func (me *Handler) storeFileOnDisk(fileDst string, reader io.Reader) error {
 	return nil
 }
 
-//"0xc5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470"
 func (me *Handler) hashStream(r io.Reader) (string, error) {
 	bts, err := ioutil.ReadAll(r)
 	if err != nil {

@@ -10,7 +10,6 @@ import (
 	"github.com/spf13/viper"
 )
 
-// TODO(mmal): unify configuration, better defaults mechanism (should be by struct tag),
 // plug pgp-server conf here too, decide how much should be shared across targets, better pkg location
 
 /*
@@ -50,7 +49,6 @@ func init() {
 
 	flag.String("a", ":8082", "pddress and port")
 
-	//flag.String("net", "ropsten", "Ethereum network") //TODO impl.
 	flag.String("dir", "./", "directory") //0x5b3d62ca34bbef5428f660dffe893f084a985754
 	flag.String("address", "0x5C9eDfaaC887552D6b521E38dAA3BFf1f645fD36", "The storage providers ethereum address")
 	flag.String("xesContract", "0x84E0b37e8f5B4B86d5d299b0B0e33686405A3919", "XES contract address")
@@ -69,8 +67,6 @@ func Setup() {
 	viper.BindPFlags(pflag.CommandLine)
 	viper.SetConfigName("config")
 	viper.SetConfigType("json")
-	//viper.AddConfigPath("/etc/appname/")   // path to look for the config file in
-	//viper.AddConfigPath("$HOME/.appname")  // call multiple times to add many search paths
 	viper.AddConfigPath(viper.GetString("cfg")) // optionally look for config in the working directory
 	viper.ReadInConfig()                        // Find and read the config file
 	viper.Unmarshal(&Config)

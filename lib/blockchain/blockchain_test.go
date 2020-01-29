@@ -93,9 +93,6 @@ func TestEndToEndDeploy(t *testing.T) {
 			event := <-events
 			fmt.Print(">Event: ")
 			fmt.Println(testcontract.UnpackTestEvent(event))
-			//fmt.Println("Stopping Listener...")
-			//stop <- true
-			//break
 		}
 	}()
 	if listener || deploy {

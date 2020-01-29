@@ -10,7 +10,6 @@ contract EternalStorage {
     using VMap for VMap.addressSet;
 
     struct File {
-        //bytes32 hash;
         address owner;
         uint fileType;//1=thumbnail, 2=file with undefined signers, 3=file with defined signers
         uint signersCount;
@@ -18,10 +17,7 @@ contract EternalStorage {
         address[] signers;
 
         VMap.addressSet readAccess;
-        //mapping(address => bool) readAccess;
-        //mapping(address => bool) writeAccess;
 
-        //VMap.addressSet storageProviders;
         mapping(address => bool) storageProviders;
 
         bool removed;

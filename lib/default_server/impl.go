@@ -110,12 +110,10 @@ func DefaultHTTPErrorHandler(err error, c echo.Context) {
 			if _, err := os.Stat(errorPage); os.IsNotExist(err) {
 				//file does not exist
 				if err := c.JSON(code, msg); err != nil {
-					//fmt.Println(err)
 					goto ERROR
 				}
 			} else {
 				if err := c.Render(code, errorPage, nil); err != nil {
-					//fmt.Println(err)
 					goto ERROR
 				}
 			}
@@ -123,5 +121,4 @@ func DefaultHTTPErrorHandler(err error, c echo.Context) {
 		}
 	}
 ERROR:
-	//fmt.Println(err)
 }

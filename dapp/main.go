@@ -86,6 +86,7 @@ func main() {
 	multilogwriter := setupMultiLogWriter(filepath.Join(config.Config.StorageDir, "proxeus.log"))
 	astilogger.Out = multilogwriter
 	e := echo.New()
+
 	chann, app := api.MainApi(e)
 
 	e.Logger.SetOutput(multilogwriter)
@@ -128,7 +129,6 @@ func main() {
 
 	hookEndpoints(e)
 
-	//api.MainApi(e)
 	err = e.Start(localAddr)
 	if err != nil && err != http.ErrServerClosed {
 		panic(err)
@@ -196,6 +196,7 @@ func electronInstance(dataDir string) *astilectron.Astilectron {
 	return a
 }
 
+//creates a window
 func startElectron(a *astilectron.Astilectron) {
 	err := a.Start()
 	if err != nil {
@@ -249,6 +250,7 @@ func showWindowWithError(a *astilectron.Astilectron, title, message string) {
 	}
 }
 
+//hook endpoints for frontend and static files
 func hookEndpoints(e *echo.Echo) {
 	e.HideBanner = true
 	embed := &embedded.Embedded{Asset: spp.Asset}

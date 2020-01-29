@@ -104,7 +104,6 @@ func (me *xesTransactor) xesApprove(ethPrivKeyFrom string, ethAddressTo string, 
 	to := common.HexToAddress(ethAddressTo)
 	opts, err := me.baseClient.getAuth(ethPrivKeyFrom)
 	input, err := me.xesABI.Pack("approve", to, xesAmount)
-	//var err error
 
 	// Ensure a valid value field and resolve the account nonce
 	value := opts.Value
@@ -164,7 +163,6 @@ func (me *xesTransactor) xesApproveToProxeusFS(ethPrivKeyFrom string, xesAmount 
 	to := me.pfsAddress
 	opts, err := me.baseClient.getAuth(ethPrivKeyFrom)
 	input, err := me.xesABI.Pack("approve", to, xesAmount)
-	//var err error
 
 	// Ensure a valid value field and resolve the account nonce
 	value := opts.Value
@@ -200,7 +198,6 @@ func (me *xesTransactor) xesTransferFrom(ethPrivKeyFrom, ethAddressFrom, ethAddr
 	to := common.HexToAddress(ethAddressTo)
 	opts, err := me.baseClient.getAuth(ethPrivKeyFrom)
 	input, err := me.xesABI.Pack("transferFrom", from, to, xesAmount)
-	//var err error
 
 	// Ensure a valid value field and resolve the account nonce
 	value := opts.Value

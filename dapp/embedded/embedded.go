@@ -27,6 +27,7 @@ func (emb *Embedded) Asset2(name string) ([]byte, error) {
 	return nil, os.ErrNotExist
 }
 
+//returns the asset and its content type
 func (emb *Embedded) FindAssetWithCT(name string, ct *string) ([]byte, error) {
 	if name != "" {
 		jj, err := emb.Asset2(name)

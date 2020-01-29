@@ -673,7 +673,6 @@ func (me *DappClient) FileInfo(fileHash [32]byte, readFromCache bool) (fi fs.Fil
 	return me.fsClient.FileInfo(fileHash, readFromCache)
 }
 
-//[0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]
 func (me *DappClient) XESAmountPerFile(prvs []common.Address) (*big.Int, error) {
 	return me.fsClient.xesAmountPerFile(prvs)
 }

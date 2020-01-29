@@ -198,9 +198,6 @@ func (me *baseClient) listen() {
 	defer func() {
 		me.stopping = true
 		cancel()
-		//if me.sub != nil { TODO right now it is causing panics sometimes
-		//	me.sub.Unsubscribe()
-		//}
 		me.stopWg.Done()
 		log.Println("listen() ended...")
 	}()
