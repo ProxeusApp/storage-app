@@ -97,7 +97,6 @@ func TestEndToEndDeploy(t *testing.T) {
 			//stop <- true
 			//break
 		}
-		fmt.Println("Stopped Listing for Events.")
 	}()
 	if listener || deploy {
 		fmt.Println("Setting up EventListener...")

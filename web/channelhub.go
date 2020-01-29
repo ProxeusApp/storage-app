@@ -81,8 +81,8 @@ type (
 		RequestID int         `json:"rid,omitempty"`
 		Data      interface{} `json:"d,omitempty"`
 		//ClientID should be the same as Owner
-		ClientID string  `json:"u,omitempty"`
-		client   *client `json:"-"`
+		ClientID string `json:"u,omitempty"`
+		client   *client
 	}
 
 	regMsg struct {
@@ -153,7 +153,7 @@ func (ch *ChannelHub) Run(startUpChannels ...*Channel) error {
 				if err = chanl.beforeAttach(); err == nil {
 					ch.attach(chanl)
 				} else {
-					fmt.Errorf("Validation error with Channel %s : %s", chanl.ID, err.Error())
+					fmt.Printf("Validation error with Channel %s : %s", chanl.ID, err.Error())
 				}
 			}
 		}

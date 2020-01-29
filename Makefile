@@ -28,7 +28,7 @@ validate-ui:
 	make -C ui validate
 
 fmt:
-	goimports -w -local dapp/api dapp/core pgp-server spp lib
+	goimports -w -local dapp/api dapp/core pgp-server spp lib web
 	make -C ui fmt
 
 test:

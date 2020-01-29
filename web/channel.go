@@ -44,19 +44,19 @@ type Channel struct {
 	System bool `json:"system,omitempty"`
 
 	//async listeners
-	Created      ChannelListener `json:"-"`
-	Subscribed   ChannelListener `json:"-"`
-	Unsubscribed ChannelListener `json:"-"`
-	Removed      ChannelListener `json:"-"`
+	Created      ChannelListener
+	Subscribed   ChannelListener
+	Unsubscribed ChannelListener
+	Removed      ChannelListener
 
 	//sync listener
-	BeforeBroadcast func(c *Channel, chMsg *ChannelHubMsg) (proceed bool) `json:"-"`
+	BeforeBroadcast func(c *Channel, chMsg *ChannelHubMsg) (proceed bool)
 
-	clients      map[*client]bool `json:"-"`
-	clientsCount int              `json:"-"`
+	clients      map[*client]bool
+	clientsCount int
 
-	dynChanl  *dynamicChannel `json:"-"`
-	clientsRW sync.RWMutex    `json:"-"`
+	dynChanl  *dynamicChannel
+	clientsRW sync.RWMutex
 }
 
 var (
