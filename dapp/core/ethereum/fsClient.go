@@ -133,11 +133,6 @@ func (me *fsClient) LogAsNotifySign(lg *types.Log, recent bool) (*eth.ProxeusFSC
 		return nil, err
 	}
 
-	//TODO(ave) make more efficient
-	//toAddr := strings.ToLower("0x" + hex.EncodeToString(event.Who[:]))
-	//if toAddr != me.baseClient.currentAddress {
-	//	return nil // request not directed to us
-	//}
 	interesting, err := me.eventInterestingForMe(event.Hash, recent)
 	if err != nil {
 		return nil, err

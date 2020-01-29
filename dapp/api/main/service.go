@@ -29,7 +29,6 @@ func main() {
 
 	e.Use(middleware.CORSWithConfig(middleware.CORSConfig{
 		AllowOrigins: []string{"http://localhost:8080"},
-		//AllowHeaders: []string{echo.HeaderOrigin, echo.HeaderContentType, echo.HeaderAccept, echo.HeaderXRequestedWith},
 	}))
 
 	{
@@ -40,7 +39,6 @@ func main() {
 		config.Config.StorageDir = filepath.Join(usr.HomeDir, ".proxeus-data")
 	}
 
-	//api.MainApi(e)
 	chann, app := api.MainApi(e)
 	// Start server
 	go func() {

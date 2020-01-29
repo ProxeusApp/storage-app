@@ -37,15 +37,10 @@ func MainApi(e *echo.Echo) (*channelhub.ChannelHub, *core.App) {
 		}()
 	}
 
-	//TODO Change this when production ready
-	//Temporary solution to allow front-end requests
 	e.Use(middleware.CORSWithConfig(middleware.CORSConfig{
 		AllowOrigins: []string{"http://localhost:8080"},
 		AllowHeaders: []string{echo.HeaderOrigin, echo.HeaderContentType, echo.HeaderAccept, echo.HeaderXRequestedWith},
 	}))
-
-	//e.Use(middleware.Logger())
-	//e.Use(middleware.Recover())
 
 	chanHub := &channelhub.ChannelHub{
 		ChannelFind: func(cMsg *channelhub.ChannelHubMsg) (chnl *channelhub.Channel, create bool) {
@@ -53,15 +48,6 @@ func MainApi(e *echo.Echo) (*channelhub.ChannelHub, *core.App) {
 			create = true
 			return
 		},
-		//ChannelDataFind: func(cMsg *channelhub.ChannelHubMsg) {
-		//	//TODO fill cMsg.Data
-		//},
-		//ChannelCreated: func(chanl *channelhub.Channel, client *channelhub.Client) {
-		//	fmt.Println("channel created: ", chanl.ID, client)
-		//},
-		//ChannelRemoved: func(chanl *channelhub.Channel, client *channelhub.Client) {
-		//	fmt.Println("channel removed: ", chanl.ID, client)
-		//},
 	}
 
 	app, err := core.NewApp(&config.Config, chanHub, time.Minute*30)
@@ -74,17 +60,9 @@ func MainApi(e *echo.Echo) (*channelhub.ChannelHub, *core.App) {
 		&channelhub.Channel{
 			ID:    "global",
 			Owner: "dapp",
-			//BeforeBroadcast: func(chanl *channelhub.Channel, msg *channelhub.ChannelHubMsg) bool {
-			//	fmt.Println("before broadcast: ", msg.ChannelID, msg.Data)
-			//	return true
-			//},
 		},
 		&channelhub.Channel{
-			ID: "sys",
-			//BeforeBroadcast: func(chanl *channelhub.Channel, msg *channelhub.ChannelHubMsg) bool {
-			//	fmt.Println("before broadcast: ", msg.ChannelID, msg.Data)
-			//	return true
-			//},
+			ID:     "sys",
 			System: true,
 		},
 	)
@@ -547,9 +525,6 @@ func MainApi(e *echo.Echo) (*channelhub.ChannelHub, *core.App) {
 
 	})
 
-	// TODO update i18n package to be able to use JSON files as storage and use that here.
-	// For the dapp we can't use a mysqlDB
-	// i18n.AttachWebAPI(jsonApi, jsonApi)
 	return chanHub, app
 }
 

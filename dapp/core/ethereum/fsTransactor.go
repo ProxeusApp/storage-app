@@ -518,7 +518,6 @@ func (me *fsTransactor) alreadyExists(fileHash []byte) error {
 		ufh := uniqueFileHash{}
 		err := json.Unmarshal(ufBts, &ufh)
 		// condition should be substituted to the next one when expiry is implemented
-		//if err == nil && ufh.Expired > time.Now().Unix() {
 		if err == nil {
 			return os.ErrExist
 		}

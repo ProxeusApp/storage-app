@@ -39,18 +39,6 @@ const gasCacheCleanup = 10 * time.Minute
 
 const DefaultContextTimeout = time.Duration(20 * time.Second)
 
-//var instance *ETHClient
-//var initialized uint32
-//var once sync.Once
-
-//Singleton Pattern
-//func GetETHClientInstance() *ETHClient {
-//	once.Do(func() {
-//		instance = new(ETHClient)
-//	})
-//	return instance
-//}
-
 func NewETHClient(nodeURL string, nodeWSURL string) *ETHClient {
 	instance := new(ETHClient)
 	instance.Connect(nodeURL, nodeWSURL)

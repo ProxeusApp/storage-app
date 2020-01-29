@@ -50,11 +50,6 @@ contract VMap {
         bool removed;
         uint expiry;// https://ethereum.stackexchange.com/questions/32173/how-to-handle-dates-in-solidity-and-web3
         mapping(bytes32 => bytes32) replacesFileStore;
-        //bytes32 replacesFile;//TODO figure out how to manage history
-        //bool invalidated;
-        //bool isPublic;     //no use anymore
-        //bytes32 thumbnailHash;  //no use anymore
-        //bytes32 parent; //for thumbnails and no use anymore
     }
 
     function createFileInit(uint fileType, bytes32 hash, uint32 timestamp, address owner, uint expiry, bytes32 replacesFile, address[] definedSigners) public returns (bool) {
