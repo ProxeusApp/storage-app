@@ -10,12 +10,24 @@ import (
 	"github.com/boltdb/bolt"
 )
 
-type DB struct {
-	failSafeLock sync.Mutex
-	db           *bolt.DB
-	dbPath       string
-	dbName       string
-}
+type (
+	DB struct {
+		failSafeLock sync.Mutex
+		db           *bolt.DB
+		dbPath       string
+		dbName       string
+	}
+
+	DataStore interface {
+		Put(key []byte, val []byte) error
+		Get(key []byte) (resBytes []byte, err error)
+		All() (keys [][]byte, err error)
+		FilterKeySuffix(keySuffix []byte) (keys [][]byte, err error)
+		AllWithValues() (keys [][]byte, vals [][]byte, err error)
+		Del(key []byte) error
+		Close()
+	}
+)
 
 func Open(dbPath, dbName string) (*DB, error) {
 	db := &DB{dbPath: dbPath, dbName: dbName}
@@ -105,31 +117,6 @@ func (me *DB) All() (keys [][]byte, err error) {
 				newK := make([]byte, len(k))
 				copy(newK, k)
 				keys = append(keys, newK)
-				return nil
-			})
-		}
-		return nil
-	})
-	me.failSafeLock.Unlock()
-	if err != nil || me.failSafeCheck() {
-		me.openDB()
-		err = os.ErrInvalid
-	}
-	return
-}
-
-func (me *DB) FilterKeyPrefix(keyPrefix []byte) (keys [][]byte, err error) {
-	keys = [][]byte{}
-	me.failSafeLock.Lock()
-	err = me.db.View(func(tx *bolt.Tx) error {
-		b := tx.Bucket([]byte("toAdd"))
-		if b != nil {
-			return b.ForEach(func(k, v []byte) error {
-				if bytes.HasPrefix(bytes.ToLower(k), bytes.ToLower(keyPrefix)) {
-					newK := make([]byte, len(k))
-					copy(newK, k)
-					keys = append(keys, newK)
-				}
 				return nil
 			})
 		}

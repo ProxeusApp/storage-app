@@ -695,7 +695,19 @@ func (me *App) onUserLogin(isNew bool) error {
 		return err
 	}
 
-	me.addressBook, err = account.NewAddressBook(userAccountAppDir, me.wallet.GetPGPClient())
+	addressBookStorageDir := "."
+	if userAccountAppDir != "" {
+		addressBookStorageDir = userAccountAppDir
+	}
+	addressBookDB, err := embdb.Open(addressBookStorageDir, account.AddressBookDBName)
+	if err != nil {
+		return err
+	}
+
+	if me.wallet.GetPGPClient() == nil {
+		return os.ErrInvalid
+	}
+	me.addressBook, err = account.NewAddressBook(addressBookDB, me.wallet.GetPGPClient())
 	if err != nil {
 		return err
 	}
