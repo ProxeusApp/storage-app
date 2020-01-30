@@ -23,18 +23,9 @@ type (
 	AddressBook struct {
 		book             map[string]*AddressBookEntry
 		rwLoadLock       sync.RWMutex
-		db               *embdb.DB
+		db               embdb.DataStore
 		pgpServiceClient *pgpService.Client
 		stopchan         chan bool
-		storageDir       string
-	}
-	AddressBookEntry struct {
-		Name                    string `json:"name"`
-		ETHAddress              string `json:"address"`
-		PGPPublicKey            string `json:"pgpPublicKey"`
-		ValidatedWithPGPService bool   `json:"validatedWithPGPService"`
-		lastPGPServiceCheck     time.Time
-		Hidden                  bool `json:"hidden"` // we hide it to be able to use it for older files (rights, etc.)
 	}
 	NameSorter []AddressBookEntry
 )
@@ -45,23 +36,13 @@ func (a NameSorter) Len() int           { return len(a) }
 func (a NameSorter) Swap(i, j int)      { a[i], a[j] = a[j], a[i] }
 func (a NameSorter) Less(i, j int) bool { return a[i].Name < a[j].Name }
 
-func NewAddressBook(storageDir string, pgpServiceClient *pgpService.Client) (*AddressBook, error) {
-	if storageDir == "" {
-		storageDir = "."
-	}
-	if pgpServiceClient == nil {
-		return nil, os.ErrInvalid
-	}
+func NewAddressBook(addressBookStore embdb.DataStore, pgpServiceClient *pgpService.Client) (*AddressBook, error) {
 	ab := &AddressBook{book: map[string]*AddressBookEntry{}, pgpServiceClient: pgpServiceClient}
-	ab.storageDir = storageDir
 
-	var err error
-	ab.db, err = embdb.Open(ab.storageDir, AddressBookDBName)
-	if err != nil {
-		return nil, err
-	}
+	ab.db = addressBookStore
+
 	ab.stopchan = make(chan bool)
-	err = ab.ensureSyncRoutine()
+	err := ab.ensureSyncRoutine()
 	if err != nil {
 		return nil, err
 	}
@@ -221,15 +202,15 @@ func (me *AddressBook) Create(name, ethAddr string) (*AddressBookEntry, error) {
 	if err != nil {
 		return nil, err
 	}
-	ethAddr = strings.ToLower(ethAddr)
-	abe := new(AddressBookEntry)
-	abe.ETHAddress = ethAddr
-	abe.Name = name
-	abe.PGPPublicKey, err = me.pgpServiceClient.Lookup(ethAddr)
-	if err != nil {
-		abe.PGPPublicKey = ""
+	pgpPublicKey := ""
+
+	if me.pgpServiceClient != nil {
+		pgpPublicKey, err = me.pgpServiceClient.Lookup(ethAddr)
+		if err != nil {
+			pgpPublicKey = ""
+		}
 	}
-	abe.Hidden = false
+	abe := NewAddressBookEntry(name, ethAddr, pgpPublicKey)
 	err = me.insertAddrBookEntry(abe)
 	return abe, err // Fails if already existing
 }
@@ -276,7 +257,7 @@ func (me *AddressBook) Stored(ethAddr string) (*AddressBookEntry, error) {
 
 // Returns a stored AddressBookEntry or an AddressBookEntry synchronized with the PGP service
 func (me *AddressBook) Get(ethAddr string) *AddressBookEntry {
-	if me.IsInvalidETHAddr(ethAddr) {
+	if me.isInvalidETHAddr(ethAddr) {
 		return nil
 	}
 	return me.provideAddrBookEntry(strings.ToLower(ethAddr))
@@ -286,7 +267,7 @@ func (me *AddressBook) validateEntry(name, ethAddr, pgpPublicKey *string) error 
 	if *name == "" {
 		return errors.New("name: invalid")
 	}
-	if me.IsInvalidETHAddr(*ethAddr) {
+	if me.isInvalidETHAddr(*ethAddr) {
 		return errors.New("ethAddress: invalid")
 	}
 	if pgpPublicKey != nil && len(*pgpPublicKey) > 0 {
@@ -297,7 +278,7 @@ func (me *AddressBook) validateEntry(name, ethAddr, pgpPublicKey *string) error 
 	return nil
 }
 
-func (me *AddressBook) IsInvalidETHAddr(addr string) bool {
+func (me *AddressBook) isInvalidETHAddr(addr string) bool {
 	return len(addr) < 40 || len(addr) > 42 && !common.IsHexAddress(addr) || me.IsEmptyAddr(addr)
 }
 
@@ -329,7 +310,9 @@ func (me *AddressBook) provideAddrBookEntry(ethAddr string) *AddressBookEntry {
 			me.rwLoadLock.Unlock()
 		}
 	}
-	me.syncEntry(abe)
+	if me.pgpServiceClient != nil {
+		me.syncEntry(abe)
+	}
 	return abe
 }
 

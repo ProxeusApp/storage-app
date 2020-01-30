@@ -2,15 +2,16 @@ package ethereum
 
 import (
 	"fmt"
-	"github.com/ProxeusApp/storage-app/dapp/core/util"
-	"github.com/ProxeusApp/storage-app/spp/config"
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/core/types"
 	"log"
 	"math/big"
 	"os"
 	"testing"
 	"time"
+
+	"github.com/ProxeusApp/storage-app/dapp/core/util"
+	"github.com/ProxeusApp/storage-app/spp/config"
+	"github.com/ethereum/go-ethereum/common"
+	"github.com/ethereum/go-ethereum/core/types"
 )
 
 //TODO impl ethereum.Client API tests
