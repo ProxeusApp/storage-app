@@ -25,7 +25,7 @@ type (
 		activeAcc     *Account
 		pgpHandler    *pgpService.PGPServiceHandler
 		lock          sync.RWMutex
-		walletUsageDB *embdb.DB
+		walletUsageDB embdb.DataStore
 	}
 	AccFile struct {
 		path       string

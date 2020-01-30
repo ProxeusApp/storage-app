@@ -276,7 +276,7 @@ func (me *Handler) metaFileDir(fhash string) (string, error) {
 	return metaPath, err
 }
 
-func (me *Handler) mainAndPlainFileDir(reg Register) (string, string, error) {
+func (me *Handler) mainAndPlainFileDir() (string, string, error) {
 	var plainDir string
 	tmpMainFileDir := filepath.Join(me.fileDir, uuid.NewRandom().String())
 	err := me.ensure(tmpMainFileDir)
@@ -314,7 +314,7 @@ func (me *Handler) PrepareRegister(reg Register, publicKeys [][]byte) (Encrypted
 		fhash, plainDir, tmpMainFileDir, metaDir string
 	)
 
-	if tmpMainFileDir, plainDir, err = me.mainAndPlainFileDir(reg); err != nil {
+	if tmpMainFileDir, plainDir, err = me.mainAndPlainFileDir(); err != nil {
 		return encryptedArchive, err
 	}
 
