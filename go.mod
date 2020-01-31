@@ -60,8 +60,9 @@ require (
 	github.com/yudai/golcs v0.0.0-20170316035057-ecda9a501e82 // indirect
 	github.com/yudai/pp v2.0.1+incompatible // indirect
 	go.etcd.io/bbolt v1.3.3 // indirect
-	golang.org/x/crypto v0.0.0-20190308221718-c2843e01d9a2
+	golang.org/x/crypto v0.0.0-20191011191535-87dc89f01550
 	golang.org/x/image v0.0.0-20190227222117-0694c2d4d067 // indirect
+	golang.org/x/tools v0.0.0-20200131000851-b4207ef49307 // indirect
 	gopkg.in/gavv/httpexpect.v1 v1.0.0-20180803094507-bdde30871313
 	gopkg.in/natefinch/lumberjack.v2 v2.0.0 // indirect
 )
