@@ -2,6 +2,9 @@
 init:
 	./build/deps.sh
 
+go-init-linux:
+	./build/go.sh
+
 dapp: dapp-ui
 	./build/dapp.sh
 
@@ -38,9 +41,6 @@ clean:
 	cd artifacts && rm -rf `ls . | grep -v 'cache'`
 
 all: spp pgp dapp
-
-
-	ln -s /core/central /go/src/git.proxeus.com/core/central
 
 .PHONY: init pgp spp main all all-debug generate test clean fmt validate link-repo
 .PHONY: dapp dapp-all-platforms dapp-all-platforms-go-only dapp-ui

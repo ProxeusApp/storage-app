@@ -13,6 +13,7 @@ This repository contains the code for the Proxeus Storage App.
 + docker
 
 Command:
+If you run linux run.
 ```
 sudo apt-get install make golang curl npm docker docker-compose
 ```
@@ -29,10 +30,23 @@ Change into directory:
 cd ~/workspace/storage-app
 ```
 
-On Windows you need to run, **as administrator**
+Windows:
+Run **as administrator**
 `npm install -g --production windows-build-tools`
 
+OSX:
+Some commands will require brew:
+`/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
+
 ### Building
+Before starting make sure you have the above listed prerequisites installed 
+and that your Go Bin directory has been added to your PATH
+
+On Linux to install golang you can also simply run:
+```
+make go-init-linux
+``` 
+
 First to initialize dependencies run (sudo might be needed):
 ```
 make init
