@@ -2676,9 +2676,9 @@ func (me *App) Close() error {
 	}
 
 	//wallet logout after encryptUserData because we need private key to encrypt directory
-	err := me.wallet.Logout()
+	err := me.wallet.Close()
 	if err != nil {
-		log.Println("[app][Close] Error when calling wallet.Logout ", err.Error())
+		log.Println("[app][Close] Error when calling wallet.Close ", err.Error())
 	}
 	return err
 }
