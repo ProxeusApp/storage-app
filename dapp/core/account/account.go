@@ -569,10 +569,7 @@ func (me *Account) Export(pw []byte) (map[string]interface{}, error) {
 }
 
 func (me *Account) Store() error {
-	go func() {
-		me.store()
-	}()
-	return nil
+	return me.store()
 }
 
 func (me *Account) store() (err error) {
@@ -591,16 +588,23 @@ func (me *Account) store() (err error) {
 		buf := new(bytes.Buffer)
 		err := me.ExportEncrypted(buf)
 		if err != nil {
+			log.Printf("[account][store] ExportEncrypted error: %s", err.Error())
 			return err
 		} else {
 			var fw *os.File
 			fw, err = os.OpenFile(me.GetFilePath(), os.O_WRONLY|os.O_CREATE|os.O_TRUNC, 0600)
 			if err != nil {
+				log.Printf("[account][store] OpenFile error: %s", err.Error())
 				return err
 			}
 			fw.Write(buf.Bytes())
 			err = fw.Close()
 		}
+	}
+	if err != nil {
+		log.Printf("[account][store] stored: file %s, err: %s", me.GetFilePath(), err.Error())
+	} else {
+		log.Printf("[account][store] stored: file: %s", me.GetFilePath())
 	}
 	return
 }

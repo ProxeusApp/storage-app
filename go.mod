@@ -7,7 +7,6 @@ require (
 	github.com/ProxeusApp/pgp v0.0.0-20181108103448-900acd1c2b92
 	github.com/ajg/form v0.0.0-20160802194845-cc2954064ec9 // indirect
 	github.com/aristanetworks/goarista v0.0.0-20181210134948-aa2a42e13be6 // indirect
-	github.com/asticode/go-astiamqp v1.0.0 // indirect
 	github.com/asticode/go-astikit v0.2.0
 	github.com/asticode/go-astilectron v0.11.0
 	github.com/asticode/go-astilectron-bundler v0.3.0 // indirect
@@ -21,8 +20,8 @@ require (
 	github.com/disintegration/imaging v1.6.0
 	github.com/edsrzf/mmap-go v1.0.0 // indirect
 	github.com/ethereum/go-ethereum v1.9.10
+	github.com/fasthttp-contrib/websocket v0.0.0-20160511215533-1f3b11f56072 // indirect
 	github.com/fatih/structs v1.1.0 // indirect
-	github.com/gavv/monotime v0.0.0-20171021193802-6f8212e8d10d // indirect
 	github.com/google/go-querystring v1.0.0 // indirect
 	github.com/google/uuid v1.1.0 // indirect
 	github.com/gorilla/sessions v1.1.3
@@ -62,7 +61,6 @@ require (
 	go.etcd.io/bbolt v1.3.3 // indirect
 	golang.org/x/crypto v0.0.0-20191011191535-87dc89f01550
 	golang.org/x/image v0.0.0-20190227222117-0694c2d4d067 // indirect
-	golang.org/x/tools v0.0.0-20200131000851-b4207ef49307 // indirect
-	gopkg.in/gavv/httpexpect.v1 v1.0.0-20180803094507-bdde30871313
+	gopkg.in/gavv/httpexpect.v2 v2.0.0
 	gopkg.in/natefinch/lumberjack.v2 v2.0.0 // indirect
 )

@@ -161,6 +161,11 @@ func (me *Uploader) register(txHash, fileHash string, rdyForUpload bool) error {
 	}
 
 	p.TxHash = txHash
+
+	if config.Config.IsTestMode() {
+		rdyForUpload = true
+	}
+
 	p.ReadyForUpload = rdyForUpload
 	if bts, err = json.Marshal(p); err != nil {
 		return err

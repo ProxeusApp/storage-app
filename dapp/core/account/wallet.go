@@ -456,13 +456,6 @@ func (me *Wallet) Logout() error {
 }
 
 func (me *Wallet) Close() error {
-	if me.pgpHandler != nil {
-		me.pgpHandler.Close()
-	}
-	if me.activeAcc != nil {
-		err := me.Logout()
-		return err
-	}
 	if me.walletUsageDB != nil {
 		me.walletUsageDB.Close()
 	}

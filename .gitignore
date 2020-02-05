@@ -3,6 +3,7 @@
 .DS_Store
 
 artifacts/*
+dapp-service
 SHOULD_INIT
 
 node_modules

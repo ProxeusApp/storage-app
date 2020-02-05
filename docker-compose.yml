@@ -6,6 +6,8 @@ services:
       context: spp
       dockerfile: Dockerfile
     restart: unless-stopped
+    environment:
+      - TESTMODE=${TESTMODE}
     ports:
       - "8085:8082"
   pgp:

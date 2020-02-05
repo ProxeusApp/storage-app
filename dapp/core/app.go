@@ -578,6 +578,7 @@ func (me *App) AccountRemove(ethAddr, pw string) error {
 }
 
 func (me *App) Login(ethAddr, pw string) error {
+	log.Print("logging in")
 	var err error
 	if len(pw) == 0 {
 		return os.ErrPermission
@@ -829,7 +830,6 @@ func (me *App) setupClipboardListener() {
 			protocol := "proxeus://"
 			if newValue != currentValue && strings.HasPrefix(newValue, protocol) {
 				currentValue = newValue
-				// proxeus://localhost:1323?dropID=cbf5d879-e962-42b8-8e05-6b0ff7846d82&recipients=0x35c2b5bd7b2f8754f121a1e2946b9199ae00163a
 				location, dropID, _, err := ParseProxeusProtocol(newValue)
 				if err == nil {
 					dest := base64.URLEncoding.EncodeToString([]byte(newValue))
@@ -883,7 +883,7 @@ func (me *App) UpdateNotification(n notification.Notification) error {
 
 func (me *App) UpdateAccountInfo() error {
 	if !me.HasActiveAndUnlockedAccount() {
-		return nil
+		return ErrNoActiveAccount
 	}
 	ai := AccountInfo{}
 	addr := me.GetActiveAccountETHAddress()
@@ -1010,7 +1010,15 @@ func (me *App) GetFile(fileHash string) (string, error) {
 	if me.hasNoActiveAccount() {
 		return "", os.ErrPermission
 	}
-	spUrl, err := me.ETHClient.SpInfoForFile(fileHash)
+	var (
+		spUrl string
+		err   error
+	)
+	if me.cfg.TestMode == "true" || true {
+		spUrl = me.cfg.ForceSpp
+	} else {
+		spUrl, err = me.ETHClient.SpInfoForFile(fileHash)
+	}
 	if err != nil {
 		return "", err
 	}
@@ -1792,20 +1800,20 @@ func (me *App) RegisterFileEstimateGas(reg file.Register, definedSigners []accou
 	return gasEstimate, err
 }
 
-func (me *App) ArchiveFileAndRegister(reg file.Register, definedSigners []account.AddressBookEntry, undefinedSignersCount int64, spInfo models.StorageProviderInfo, readers []string) error {
+func (me *App) ArchiveFileAndRegister(reg file.Register, definedSigners []account.AddressBookEntry, undefinedSignersCount int64, spInfo models.StorageProviderInfo, readers []string) (string, error) {
 	pubKeys, err := me.checkFileSizeAndCollectPGPKeys(reg, definedSigners, spInfo)
 	spUrl, err := me.ETHClient.SpInfo(common.HexToAddress(spInfo.Address))
 	if err != nil {
-		return err
+		return "", err
 	}
 	encryptedArchive, err := me.fileHandler.PrepareRegisterAndScheduleUpload(reg, pubKeys, spUrl)
 	if err != nil {
-		return err
+		return "", err
 	}
 
 	xesAmount, err := spInfo.TotalPriceForFile(reg.DurationDays, big.NewInt(encryptedArchive.Size))
 	if err != nil {
-		return err
+		return encryptedArchive.FileHash, err
 	}
 
 	txHash, err := "", nil
@@ -1825,9 +1833,10 @@ func (me *App) ArchiveFileAndRegister(reg file.Register, definedSigners []accoun
 	if err != nil {
 		log.Println("[app][ArchiveFileAndRegister] error while register file", err)
 		me.fileHandler.RemoveFileAndMetaFromDisk(encryptedArchive.FileHash)
-		return err
+		return encryptedArchive.FileHash, err
 	}
-	return me.fileHandler.Register(txHash, encryptedArchive.FileHash, false)
+	err = me.fileHandler.Register(txHash, encryptedArchive.FileHash, false)
+	return encryptedArchive.FileHash, err
 }
 
 func (me *App) registerFileWithDefinedSigners(fileHash string, filename string,
@@ -1877,6 +1886,11 @@ func (me *App) registerFileWithUndefinedSigners(fileHash string, filename string
 	}
 	fhash := util.StrHexToBytes32(fileHash)
 	replacesFileHash := util.StrHexToBytes32("")
+
+	if me.cfg.IsTestMode() {
+		return fileHash, nil
+	}
+
 	tx, err := me.ETHClient.CreateFileUndefinedSigners(me.wallet.GetActiveAccountETHPrivateKey(), fhash, filename,
 		big.NewInt(mandatorySigners), expiry, replacesFileHash, []common.Address{common.HexToAddress(ethAddrSp)}, xesAmount)
 
@@ -2676,9 +2690,9 @@ func (me *App) Close() error {
 	}
 
 	//wallet logout after encryptUserData because we need private key to encrypt directory
-	err := me.wallet.Close()
+	err := me.wallet.Logout()
 	if err != nil {
-		log.Println("[app][Close] Error when calling wallet.Close ", err.Error())
+		log.Println("[app][Close] Error when calling wallet.Logout ", err.Error())
 	}
 	return err
 }

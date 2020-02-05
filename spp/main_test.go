@@ -13,7 +13,7 @@ import (
 	"log"
 
 	"github.com/ethereum/go-ethereum/crypto"
-	httpexpect "gopkg.in/gavv/httpexpect.v1"
+	"gopkg.in/gavv/httpexpect.v2"
 
 	"github.com/ProxeusApp/storage-app/dapp/core/ethereum"
 	"github.com/ProxeusApp/storage-app/spp/config"

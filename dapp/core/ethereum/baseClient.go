@@ -5,6 +5,7 @@ import (
 	"encoding/binary"
 	"encoding/json"
 	"fmt"
+	"github.com/ProxeusApp/storage-app/spp/config"
 	"log"
 	"math/big"
 	"os"
@@ -274,6 +275,7 @@ func (me *baseClient) poll() {
 		if me.pendingTxPoller != nil {
 			me.pendingTxPoller()
 		}
+		//Poll events also in testMode else sppClient, fsClient is not fully initialized (proxeusFSContractCaller missing)
 		me.pollEvents()
 	}
 
@@ -341,7 +343,10 @@ func (me *baseClient) pollEvents() {
 			return
 		}
 
-		log.Println("[baseClient][pollEvents] Fetching data starting from block", block, "to", toBlocks[i])
+		if !config.Config.IsTestMode() {
+			//omit in testMode as it bloats output
+			log.Println("[baseClient][pollEvents] Fetching data starting from block", block, "to", toBlocks[i])
+		}
 		var logs []types.Log
 		ctx, cancel := me.ctxWithTimeout()
 		logs, err = me.ethconn.FilterLogs(ctx, ethereum.FilterQuery{
@@ -415,8 +420,12 @@ func (me *baseClient) pushConnStatus() {
 func (me *baseClient) putEventBlock(maxBlock uint64) error {
 	b := make([]byte, 8)
 	binary.LittleEndian.PutUint64(b, maxBlock)
-	return me.eventsDB.Put(me.getLastBlockKey(), b)
+	if me.eventsDB == nil || len(me.currentAddress) == 0 {
+		log.Printf("baseClient.eventsDB is nil or currentAddress is empty. May be due to user logging out")
+		return nil
+	}
 
+	return me.eventsDB.Put(me.getLastBlockKey(), b)
 }
 
 func (me *baseClient) getLastBlockKey() []byte {
