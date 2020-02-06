@@ -1014,7 +1014,7 @@ func (me *App) GetFile(fileHash string) (string, error) {
 		spUrl string
 		err   error
 	)
-	if me.cfg.TestMode == "true" || true {
+	if me.cfg.IsTestMode() {
 		spUrl = me.cfg.ForceSpp
 	} else {
 		spUrl, err = me.ETHClient.SpInfoForFile(fileHash)
