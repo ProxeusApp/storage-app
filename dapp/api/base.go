@@ -37,10 +37,17 @@ func MainApi(e *echo.Echo) (*channelhub.ChannelHub, *core.App) {
 		}()
 	}
 
-	e.Use(middleware.CORSWithConfig(middleware.CORSConfig{
-		AllowOrigins: []string{"http://localhost:8080"},
-		AllowHeaders: []string{echo.HeaderOrigin, echo.HeaderContentType, echo.HeaderAccept, echo.HeaderXRequestedWith},
-	}))
+	if cfg.IsTestMode() {
+		log.Println("##########################################################")
+		log.Println("# STARTING STORAGE APP IN TEST MODE - NOT FOR PRODUCTION #")
+		log.Println("##########################################################")
+		e.Use(middleware.CORS())
+	} else {
+		e.Use(middleware.CORSWithConfig(middleware.CORSConfig{
+			AllowOrigins: []string{"http://localhost:8080"},
+			AllowHeaders: []string{echo.HeaderOrigin, echo.HeaderContentType, echo.HeaderAccept, echo.HeaderXRequestedWith},
+		}))
+	}
 
 	chanHub := &channelhub.ChannelHub{
 		ChannelFind: func(cMsg *channelhub.ChannelHubMsg) (chnl *channelhub.Channel, create bool) {
@@ -69,6 +76,7 @@ func MainApi(e *echo.Echo) (*channelhub.ChannelHub, *core.App) {
 
 	jsonApi := e.Group("/api")
 	jsonApi.POST("/login", func(c echo.Context) error {
+		log.Print("login called")
 		params := struct {
 			ETHAddr string `json:"ethAddr"`
 			PW      string `json:"pw"`
@@ -102,7 +110,13 @@ func MainApi(e *echo.Echo) (*channelhub.ChannelHub, *core.App) {
 		return c.JSON(http.StatusOK, app.GetActiveAccountETHAddress())
 	})
 	jsonApi.GET("/account/balance", func(c echo.Context) error {
-		app.UpdateAccountInfo()
+		err := app.UpdateAccountInfo()
+		if err != nil {
+			log.Println("[MainApi] account/balance err: ", err.Error())
+			if err == core.ErrNoActiveAccount {
+				return c.JSON(http.StatusUnauthorized, err)
+			}
+		}
 		return c.NoContent(http.StatusNoContent)
 	})
 
@@ -319,7 +333,7 @@ func MainApi(e *echo.Echo) (*channelhub.ChannelHub, *core.App) {
 		reg.FileReader = f
 		reg.DurationDays = fileUploadRequest.Register.DurationDays
 
-		err = app.ArchiveFileAndRegister(reg, nil, 0, fileUploadRequest.ProviderInfo, recipients)
+		_, err = app.ArchiveFileAndRegister(reg, nil, 0, fileUploadRequest.ProviderInfo, recipients)
 		if err != nil {
 			if os.IsPermission(err) {
 				return c.JSON(http.StatusUnauthorized, err.Error())

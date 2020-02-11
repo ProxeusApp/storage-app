@@ -5,6 +5,7 @@ import (
 	"flag"
 	"log"
 	"math/big"
+	"strings"
 
 	"github.com/spf13/pflag"
 	"github.com/spf13/viper"
@@ -33,6 +34,7 @@ type Configuration struct {
 	DevMode                bool   `mapstructure:"devMode"`
 	ForceSpp               string `mapstructure:"forceSpp"`
 	AutoTLS                bool   `mapstructure:"autotls"`
+	TestMode               string `mapstructure:"TESTMODE"`
 
 	PprofDebug bool `mapstructure:"pprof"`
 
@@ -61,9 +63,20 @@ func init() {
 	flag.String("blockchainNet", "ropsten", "Blockchain Network (ropsten or mainnet)")
 }
 
+func (me Configuration) IsTestMode() bool {
+	return strings.ToLower(me.TestMode) == "true"
+}
+
 func Setup() {
 	pflag.CommandLine.AddGoFlagSet(flag.CommandLine)
 	pflag.Parse()
+
+	err := viper.BindEnv("TESTMODE")
+	if err != nil {
+		log.Println("error bind viper key to a 'testMode' ENV variable")
+		return
+	}
+
 	viper.BindPFlags(pflag.CommandLine)
 	viper.SetConfigName("config")
 	viper.SetConfigType("json")

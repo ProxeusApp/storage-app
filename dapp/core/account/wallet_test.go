@@ -1,13 +1,14 @@
 package account
 
 import (
+	"testing"
+
 	"github.com/ProxeusApp/storage-app/dapp/core/embdb"
 	"github.com/ethereum/go-ethereum/common"
-	"testing"
 )
 
 func TestWallet_LoginWithNewAccount(t *testing.T) {
-	wallet := &Wallet{walletUsageDB: embdb.OpenDummyDB()}
+	wallet := &Wallet{walletUsageDB: embdb.OpenDummyDB(), cfg: &Config{}}
 	err := wallet.LoginWithNewAccount("jesse", "securePassword")
 	if err != nil {
 		t.Error(err)
