@@ -10,11 +10,9 @@ import (
 	"path/filepath"
 	"time"
 
-	"github.com/labstack/echo"
-	"github.com/labstack/echo/middleware"
-
 	"github.com/ProxeusApp/storage-app/dapp/api"
 	"github.com/ProxeusApp/storage-app/spp/config"
+	"github.com/labstack/echo"
 )
 
 func main() {
@@ -27,16 +25,16 @@ func main() {
 	e := echo.New()
 	e.HideBanner = true
 
-	e.Use(middleware.CORSWithConfig(middleware.CORSConfig{
-		AllowOrigins: []string{"http://localhost:8080"},
-	}))
-
 	{
 		usr, err := user.Current()
 		if err != nil {
 			log.Println(err)
 		}
-		config.Config.StorageDir = filepath.Join(usr.HomeDir, ".proxeus-data")
+		if config.Config.IsTestMode() {
+			config.Config.StorageDir = filepath.Join(usr.HomeDir, ".proxeus-data-api-test")
+		} else {
+			config.Config.StorageDir = filepath.Join(usr.HomeDir, ".proxeus-data")
+		}
 	}
 
 	chann, app := api.MainApi(e)

@@ -272,7 +272,7 @@ func NewFile(c echo.Context) error {
 		return c.JSON(http.StatusBadRequest, ErrNoSppSelected.Error())
 	}
 
-	err = App.ArchiveFileAndRegister(fileUploadRequest.Register, fileUploadRequest.DefinedSignerList,
+	fileHash, err := App.ArchiveFileAndRegister(fileUploadRequest.Register, fileUploadRequest.DefinedSignerList,
 		fileUploadRequest.UndefinedSignersCount, fileUploadRequest.ProviderInfo, nil)
 	if err != nil {
 		if os.IsPermission(err) {
@@ -280,7 +280,7 @@ func NewFile(c echo.Context) error {
 		}
 		return c.JSON(http.StatusBadRequest, err.Error())
 	}
-	return c.NoContent(http.StatusOK)
+	return c.JSON(http.StatusOK, fileHash)
 }
 
 // Returns an estimation of cost

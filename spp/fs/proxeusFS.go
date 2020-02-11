@@ -36,6 +36,7 @@ type ProxeusFS struct {
 	providerInfoService service.ProviderInfoService
 	fileGblLock         sync.Mutex
 	fileMetaHandler     FileMetaHandlerInterface
+	testMode            bool
 }
 
 type SignMsg struct {
@@ -169,16 +170,26 @@ func (me *ProxeusFS) Input(docHash, token, signatureHex string, body io.Reader, 
 		// Since we don't want to copy the stream's content in memory,
 		// we're only going to verify the payment once the file has been written to disk.
 		// If the payment doesn't match or an error occurs we remove the file
-		err = me.verifyPayment(docHash, newFileSize, duration)
-		if err != nil {
-			log.Println("Can't verify payment", err)
-			return 0, err
-		}
+		var fileInfo FileInfo
+		if config.Config.IsTestMode() {
+			log.Println("SPP running in TESTMODE. File payment won't be verified")
+			fileInfo = FileInfo{
+				Id:       util.StrHexToBytes32(docHash),
+				Ownr:     common.HexToAddress(addr),
+				FileType: big.NewInt(2),
+			}
+		} else {
+			err = me.verifyPayment(docHash, newFileSize, duration)
+			if err != nil {
+				log.Println("Can't verify payment", err)
+				return 0, err
+			}
 
-		fileHash := util.StrHexToBytes32(docHash)
-		fileInfo, err := me.ethconn.FileInfo(fileHash, false)
-		if err != nil {
-			return 0, err
+			fileHash := util.StrHexToBytes32(docHash)
+			fileInfo, err = me.ethconn.FileInfo(fileHash, false)
+			if err != nil {
+				return 0, err
+			}
 		}
 		me.fileMetaHandler.Save(fileInfo)
 	}
@@ -214,21 +225,33 @@ func (me *ProxeusFS) Output(docHashString, token, signatureHex string, force boo
 		return "", err
 	}
 	// Retrieve file first
-	fi, err := me.ethconn.FileInfo(docHash, false)
-	if err != nil {
-		return "", err
-	}
-	if fi.Removed {
-		return "", ErrFileRemoved
-	}
 
-	// Then check its permissions
-	readRights, err := me.hasPermission(docHashString, addr, false)
-	if err != nil {
-		return "", err
-	}
-	if !readRights {
-		return "", ErrNoPermission
+	var fi FileInfo
+
+	if config.Config.IsTestMode() {
+		fi = FileInfo{
+			Id:       docHash,
+			Ownr:     common.HexToAddress(addr),
+			FileType: big.NewInt(2),
+		}
+	} else {
+		fi, err = me.ethconn.FileInfo(docHash, false)
+		if err != nil {
+			return "", err
+		}
+
+		if fi.Removed {
+			return "", ErrFileRemoved
+		}
+
+		// Then check its permissions
+		readRights, err := me.hasPermission(docHashString, addr, false)
+		if err != nil {
+			return "", err
+		}
+		if !readRights {
+			return "", ErrNoPermission
+		}
 	}
 
 	oldPath := filepath.Join(me.basePath, docHashString+downloadingSuffix)

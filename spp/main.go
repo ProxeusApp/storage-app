@@ -41,6 +41,12 @@ func main() {
 		log.Panic(err)
 	}
 
+	if config.Config.IsTestMode() {
+		log.Println("#######################################################")
+		log.Println("# STARTING SPP IN TEST MODE - NOT FOR PRODUCTION #")
+		log.Println("#######################################################")
+	}
+
 	c, _ := json.MarshalIndent(providerInfoService.Get(), "", "  ")
 	log.Println("providerInfoService defined configuration:")
 	log.Println(string(c))

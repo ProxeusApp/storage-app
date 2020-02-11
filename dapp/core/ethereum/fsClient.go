@@ -601,6 +601,9 @@ func (me *fsClient) GetSigningRequestUndefinedSignersCache(fileHash string) *Pen
 }
 
 func (me *fsClient) getSigningRequestFromCache(key []byte) *PendingTx {
+	if me.baseClient.eventsDB == nil {
+		return nil
+	}
 	b, err := me.baseClient.eventsDB.Get(key)
 	if err == nil && len(b) > 0 {
 		ptx := me.baseClient.deserializePendingTx(b)
