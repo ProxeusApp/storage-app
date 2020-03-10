@@ -2,6 +2,11 @@
 
 This repository contains the code for the Proxeus Storage App.
 
+## Documentation / Architectural Overview
+For more info check the [documentation](docs/overview.md).
+
+## Getting Started
+
 ### Prerequisites
 + make
 + go (1.13+, 64bit for Windows)
@@ -18,7 +23,7 @@ If you run linux run.
 sudo apt-get install make golang curl npm docker docker-compose
 ```
 
-## Getting Started
+### Get repository
 
 Get repository:
 ```
