@@ -31,7 +31,7 @@ Proxeus will design an abstraction layer for the file input and output operation
 
 ### PGP-Server
 PGP-Server is an address book concept for easy file sharing with known contacts. When a user logs in for the first time the Storage app client creates a new wallet and pgp-key. The ethereum address of the wallet and the pgp-public-key is shared with the pgp server.
-by knowing someones ethereum address users can request a users pgp-public-key and then easily share encrypted files among each other by encrypting files with the public key.
+By knowing the ethereum address of another user, the pgp-public-key can be requested from the PGP-Server. The file will then be encrypted with the requested pgp-public-key. With this mechanism users can share encrypted files among each other.
 
 
 ## File Upload / XES-Payment
