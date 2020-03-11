@@ -5,6 +5,7 @@ import (
 	"io/ioutil"
 	"log"
 	"math/big"
+	"os"
 	"strings"
 	"sync"
 
@@ -125,7 +126,7 @@ var mu sync.Mutex
 
 func GiveTokens(toWallet string) {
 	var err error
-	conn, err = ethglue.Dial("https://ropsten.infura.io/n1HoAn4TRnGMa7RSDToo")
+	conn, err = ethglue.Dial(os.Getenv("ETHCLIENTURL"))
 	if err != nil {
 		log.Panic("Failed to connect to the Ethereum client:", err)
 	}

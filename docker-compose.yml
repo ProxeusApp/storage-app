@@ -8,6 +8,8 @@ services:
     restart: unless-stopped
     environment:
       - TESTMODE=${TESTMODE}
+      - ETHCLIENTURL=https://ropsten.infura.io/v3/YOURAPIKEY
+      - ETHWEBSOCKETURL=wss://ropsten.infura.io/ws/v3/YOURAPIKEY
     ports:
       - "8085:8082"
   pgp:
@@ -15,5 +17,8 @@ services:
       context: pgp-server
       dockerfile: Dockerfile
     restart: unless-stopped
+    environment:
+      - ETHCLIENTURL=https://ropsten.infura.io/v3/YOURAPIKEY
+      - ETHWEBSOCKETURL=wss://ropsten.infura.io/ws/v3/YOURAPIKEY
     ports:
       - "8084:8080"

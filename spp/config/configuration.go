@@ -21,8 +21,8 @@ import (
 */
 type Configuration struct {
 	PGPPublicServiceURL string `mapstructure:"pgpPublicServiceURL"`
-	EthClientURL        string `mapstructure:"ethClientURL"`
-	EthWebSocketURL     string `mapstructure:"ethWebSocketURL"`
+	EthClientURL        string `mapstructure:"ETHCLIENTURL"`
+	EthWebSocketURL     string `mapstructure:"ETHWEBSOCKETURL"`
 	MainHostedURL       string `mapstructure:"mainHostedURL"`
 
 	ServiceAddress string `mapstructure:"a"`
@@ -45,8 +45,8 @@ var Config Configuration
 
 func init() {
 	flag.String("pgpPublicServiceURL", "http://localhost:8084", "PGP public service URL")
-	flag.String("ethClientURL", "https://ropsten.infura.io/v3/4876e0df8d31475799c8239ba2538c4c", "Ethereum client URL")
-	flag.String("ethWebSocketURL", "wss://ropsten.infura.io/ws/v3/4876e0df8d31475799c8239ba2538c4c", "Ethereum websocket URL")
+	flag.String("ethClientURL", "https://ropsten.infura.io/v3/YOURAPIKEY", "Ethereum client URL")
+	flag.String("ethWebSocketURL", "wss://ropsten.infura.io/ws/v3/YOURAPIKEY", "Ethereum websocket URL")
 	flag.String("mainHostedURL", "https://dev.proxeus.com", "Main hosted URL")
 
 	flag.String("a", ":8082", "pddress and port")
@@ -72,6 +72,18 @@ func Setup() {
 	pflag.Parse()
 
 	err := viper.BindEnv("TESTMODE")
+	if err != nil {
+		log.Println("error bind viper key to a 'testMode' ENV variable")
+		return
+	}
+
+	err = viper.BindEnv("ETHCLIENTURL")
+	if err != nil {
+		log.Println("error bind viper key to a 'testMode' ENV variable")
+		return
+	}
+
+	err = viper.BindEnv("ETHWEBSOCKETURL")
 	if err != nil {
 		log.Println("error bind viper key to a 'testMode' ENV variable")
 		return
