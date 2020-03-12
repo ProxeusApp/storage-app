@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"fmt"
 	"io/ioutil"
+	"os"
 	"testing"
 	"time"
 
@@ -16,7 +17,7 @@ import (
 
 func TestEndToEndDeploy(t *testing.T) {
 	t.SkipNow()
-	const defaultEthURL = "https://ropsten.infura.io/v3/"
+	defaultEthURL := os.Getenv("ETHCLIENTURL")
 	const defaultEthwsURL = "wss://ropsten.infura.io/ws"
 	const testwallet = `{"address":"f8ae553b87f695a938236d22c48a0c5b43edddbe",
 	"crypto":{

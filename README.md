@@ -64,6 +64,9 @@ make all
 
 ### Building and running servers locally
 
+In the `docker-compose.yml` set the variables for `ETHCLIENTURL` and `ETHWEBSOCKETURL.
+You can get one here https://infura.io
+
 Start spp and pgp-server (sudo might be needed)
 ```
 docker-compose up spp pgp
@@ -72,5 +75,5 @@ docker-compose up spp pgp
 To run the app in devMode add the "devMode"-flag:
 E.g. on OSX:
 ```
-./artifacts/dapp/darwin-amd64/Proxeus.app/Contents/MacOS/Proxeus --devMode
+ETHCLIENTURL=https://ropsten.infura.io/v3/YOURAPIKEY ETHWEBSOCKETURL=wss://ropsten.infura.io/ws/v3/YOURAPIKEY ./artifacts/dapp/darwin-amd64/Proxeus.app/Contents/MacOS/Proxeus --devMode
 ```
