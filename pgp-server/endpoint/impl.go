@@ -9,7 +9,6 @@ import (
 
 	"github.com/labstack/echo"
 
-	"github.com/ProxeusApp/storage-app/lib/airdrop"
 	"github.com/ProxeusApp/storage-app/pgp-server/storage"
 	"github.com/ProxeusApp/storage-app/spp/fs"
 )
@@ -58,7 +57,6 @@ func AddPublicKey(c echo.Context) error {
 						log.Println("airdrop recover with err ", r)
 					}
 				}()
-				airdrop.GiveTokens(ethereumAddress)
 			}()
 		} else {
 			c.Logger().Error(err)
